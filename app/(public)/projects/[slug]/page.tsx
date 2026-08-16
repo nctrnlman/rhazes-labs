@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
-import { ArrowLeft, ExternalLink, Code2, Tag } from "lucide-react"
+import { ArrowLeft, ExternalLink, Code2, Tag, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -67,13 +67,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
 
         {metrics && Object.keys(metrics).length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            {Object.entries(metrics).map(([key, value]) => (
-              <div key={key} className="bg-card border border-border rounded-2xl p-4 text-center">
-                <p className="text-2xl font-semibold text-foreground">{value}</p>
-                <p className="text-xs text-muted-foreground mt-1 capitalize">{key.replace(/_/g, " ")}</p>
-              </div>
-            ))}
+          <div className="mb-12">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-accent" /> Results
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {Object.entries(metrics).map(([key, value]) => (
+                <div key={key} className="bg-card border border-border rounded-2xl p-4 text-center">
+                  <p className="text-2xl font-semibold text-foreground">{value}</p>
+                  <p className="text-xs text-muted-foreground mt-1 capitalize">{key.replace(/_/g, " ")}</p>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 

@@ -24,11 +24,13 @@ export function HeroSection({ availability, resumeUrl }: Props) {
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-3 text-xl font-light tracking-wide text-muted-foreground sm:text-2xl">
-            Full Stack Engineer · Founder @ Codenito · Builder
+            I build production-grade software — then I build the studio that ships it.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-12 max-w-2xl text-base leading-relaxed text-muted-foreground/80 sm:text-lg">
-            Building scalable, production-grade systems that empower businesses and communities.
+            3+ years turning ambitious ideas into systems that scale — from enterprise contact-center
+            platforms at <strong className="text-foreground/70">Home Credit Indonesia</strong> to 15+ production
+            launches through <strong className="text-foreground/70">Codenito ID</strong>, the studio I founded.
             Based in <strong className="text-foreground/70">Jakarta</strong> — working globally.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
