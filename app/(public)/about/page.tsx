@@ -5,7 +5,11 @@ import { SkillsVisualization } from "@/components/shared/skills-visualization"
 import { CopyEmailButton } from "@/components/shared/copy-email-button"
 import { prisma } from "@/lib/prisma"
 import type { Metadata } from "next"
-export const metadata: Metadata = { title: "About" }
+export const metadata: Metadata = {
+  title: "About",
+  description: "Full Stack Engineer based in Jakarta with 3+ years building production-grade systems. Founder of Codenito ID, actively learning AI/ML.",
+  alternates: { canonical: "/about" },
+}
 
 export default async function AboutPage() {
   const settings = await prisma.setting.findMany()

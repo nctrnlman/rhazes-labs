@@ -3,7 +3,11 @@ import { FadeIn } from "@/components/shared/motion-wrapper"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { BookOpen, Code2, Lightbulb, CalendarDays } from "lucide-react"
 import type { Metadata } from "next"
-export const metadata: Metadata = { title: "Now" }
+export const metadata: Metadata = {
+  title: "Now",
+  description: "What Rhazes Devino is currently learning, building, and reading — updated regularly.",
+  alternates: { canonical: "/now" },
+}
 
 export default async function NowPage() {
   const settings = await prisma.setting.findMany({ where: { key: { in: ["now_learning", "now_building", "now_reading", "now_updated_at"] } } })

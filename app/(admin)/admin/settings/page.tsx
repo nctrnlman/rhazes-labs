@@ -35,6 +35,15 @@ const settingGroups = [
       { key: "resume_url", label: "Resume URL", placeholder: "https://..." },
     ],
   },
+  {
+    title: "Site & SEO",
+    settings: [
+      { key: "site_name", label: "Site Name", placeholder: "Rhazes Devino" },
+      { key: "site_description", label: "Default Meta Description", placeholder: "Full Stack Engineer, Founder of Codenito ID..." },
+      { key: "social_github", label: "GitHub URL", placeholder: "https://github.com/yourusername" },
+      { key: "social_linkedin", label: "LinkedIn URL", placeholder: "https://linkedin.com/in/yourusername" },
+    ],
+  },
 ]
 
 async function updateSettings(formData: FormData) {
@@ -47,8 +56,7 @@ async function updateSettings(formData: FormData) {
       create: { key, value },
     })
   }
-  revalidatePath("/")
-  revalidatePath("/now")
+  revalidatePath("/", "layout")
   revalidatePath("/admin/settings")
 }
 

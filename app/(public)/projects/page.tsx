@@ -3,7 +3,11 @@ import { ProjectCard } from "@/components/projects/project-card"
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/shared/motion-wrapper"
 import { SectionHeading } from "@/components/shared/section-heading"
 import type { Metadata } from "next"
-export const metadata: Metadata = { title: "Projects" }
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Production-grade systems built by Rhazes Devino for real businesses — full stack web apps, platforms, and case studies.",
+  alternates: { canonical: "/projects" },
+}
 
 export default async function ProjectsPage() {
   const projects = await prisma.project.findMany({ orderBy: [{ featured: "desc" }, { order: "asc" }] })

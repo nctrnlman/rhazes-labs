@@ -6,7 +6,11 @@ import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/lib/utils"
 import { SectionHeading } from "@/components/shared/section-heading"
 import type { Metadata } from "next"
-export const metadata: Metadata = { title: "Blog" }
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Writing on engineering, architecture, AI/ML, and building products at scale, by Rhazes Devino.",
+  alternates: { canonical: "/blog" },
+}
 
 export default async function BlogPage() {
   const posts = await prisma.blogPost.findMany({ where: { status: "published" }, orderBy: { publishedAt: "desc" } })

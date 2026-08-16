@@ -4,7 +4,11 @@ import { SectionHeading } from "@/components/shared/section-heading"
 import { Button } from "@/components/ui/button"
 import { Code2, Layers, MessageSquare, ArrowRight, CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
-export const metadata: Metadata = { title: "Work With Me" }
+export const metadata: Metadata = {
+  title: "Work With Me",
+  description: "Hire Rhazes Devino for full stack development, solution architecture, or technical consulting via Codenito ID.",
+  alternates: { canonical: "/work-with-me" },
+}
 
 const services = [
   { icon: Code2, title: "Full Stack Development", items: ["Web apps & APIs end-to-end", "React, Next.js, NestJS, Spring Boot", "PostgreSQL, MongoDB, Redis", "Responsive, production-ready UI"] },

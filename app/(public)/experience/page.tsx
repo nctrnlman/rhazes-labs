@@ -2,7 +2,11 @@ import { ExperienceTimeline } from "@/components/shared/experience-timeline"
 import { FadeIn } from "@/components/shared/motion-wrapper"
 import { SectionHeading } from "@/components/shared/section-heading"
 import type { Metadata } from "next"
-export const metadata: Metadata = { title: "Experience" }
+export const metadata: Metadata = {
+  title: "Experience",
+  description: "Career journey and education timeline of Rhazes Devino — Home Credit Indonesia, Codenito ID, and beyond.",
+  alternates: { canonical: "/experience" },
+}
 
 const education = [
   { school: "Asia e University", degree: "Bachelor of ICT (Hons)", period: "Aug 2021 – Oct 2025", location: "Subang Jaya, Malaysia", note: "Final Project: Talent Hiring Smart Matching System" },
