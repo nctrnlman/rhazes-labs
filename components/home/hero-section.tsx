@@ -58,11 +58,13 @@ export function HeroSection({ availability, resumeUrl }: Props) {
             src="/images/rhazes-profile.jpg"
             alt="Rhazes Devino"
             fill
-            className="object-cover"
+            className="object-cover grayscale contrast-125 brightness-95"
             priority
             quality={100}
             sizes="(min-width: 1024px) 40vw, 100vw"
           />
+          <div className="absolute inset-0 bg-accent mix-blend-color" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
         </motion.div>
       </div>
     </ScrollStory>
