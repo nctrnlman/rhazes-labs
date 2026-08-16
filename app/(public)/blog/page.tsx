@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Clock, Eye, ArrowRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/lib/utils"
+import { SectionHeading } from "@/components/shared/section-heading"
 import type { Metadata } from "next"
 export const metadata: Metadata = { title: "Blog" }
 
@@ -13,9 +14,11 @@ export default async function BlogPage() {
     <div className="section-padding">
       <div className="container-custom px-4 sm:px-6 lg:px-8">
         <FadeIn className="mb-12 max-w-2xl">
-          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">Writing</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Blog</h1>
-          <p className="text-muted-foreground text-lg">Thoughts on engineering, architecture, AI/ML, and building products at scale.</p>
+          <SectionHeading
+            eyebrow="Writing"
+            title="Blog"
+            description="Thoughts on engineering, architecture, AI/ML, and building products at scale."
+          />
         </FadeIn>
         {posts.length === 0 ? (
           <FadeIn className="text-center py-24 text-muted-foreground">

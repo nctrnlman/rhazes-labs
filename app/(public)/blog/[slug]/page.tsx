@@ -52,13 +52,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map((tag) => (
-            <span key={tag} className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-500/10 text-blue-500 text-xs font-medium">
+            <span key={tag} className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
               <Tag className="w-3 h-3" />{tag}
             </span>
           ))}
         </div>
 
-        <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">{post.title}</h1>
+        <h1 className="mb-6 text-3xl font-semibold leading-tight md:text-5xl">{post.title}</h1>
 
         <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-12 pb-8 border-b border-border">
           {post.publishedAt && (
@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         <div className="mt-16 pt-8 border-t border-border">
           <div className="bg-card border border-border rounded-2xl p-6 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-white">
               R
             </div>
             <div>

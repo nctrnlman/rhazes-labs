@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { BookOpen, Send } from "lucide-react"
 import { toast } from "sonner"
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/shared/motion-wrapper"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { Button } from "@/components/ui/button"
 
 type Entry = {
   id: string
@@ -54,16 +56,11 @@ export default function GuestbookPage() {
       <div className="container-custom max-w-4xl">
         <FadeIn>
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border text-sm font-medium mb-6">
-              <BookOpen className="w-4 h-4 text-blue-500" />
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium">
+              <BookOpen className="h-4 w-4 text-accent" />
               Guestbook
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Leave a <span className="gradient-text">Mark</span>
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Sign my guestbook and let me know you stopped by.
-            </p>
+            <SectionHeading title="Leave a Mark" description="Sign my guestbook and let me know you stopped by." align="center" />
           </div>
         </FadeIn>
 
@@ -75,7 +72,7 @@ export default function GuestbookPage() {
                 <p className="text-muted-foreground mt-2">Your entry is pending review and will appear shortly.</p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-6 text-blue-500 hover:underline text-sm"
+                  className="mt-6 text-sm text-accent hover:underline"
                 >
                   Leave another message
                 </button>
@@ -92,7 +89,7 @@ export default function GuestbookPage() {
                     type="text"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors"
                     placeholder="Your name"
                   />
                 </div>
@@ -105,21 +102,17 @@ export default function GuestbookPage() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     rows={3}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors resize-none"
                     placeholder="Say something nice..."
                   />
                 </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn-primary px-8 py-3 rounded-xl font-semibold flex items-center gap-2 disabled:opacity-60"
-                >
+                <Button type="submit" disabled={loading} variant="pill" className="h-auto px-8 py-3">
                   {loading ? (
-                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                   ) : (
-                    <><Send className="w-4 h-4" /> Sign Guestbook</>
+                    <><Send className="h-4 w-4" /> Sign Guestbook</>
                   )}
-                </button>
+                </Button>
               </form>
             )}
           </div>

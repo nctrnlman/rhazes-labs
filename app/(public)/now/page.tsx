@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import { FadeIn } from "@/components/shared/motion-wrapper"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { BookOpen, Code2, Lightbulb, CalendarDays } from "lucide-react"
 import type { Metadata } from "next"
 export const metadata: Metadata = { title: "Now" }
@@ -16,8 +17,7 @@ export default async function NowPage() {
     <div className="section-padding">
       <div className="container-custom px-4 sm:px-6 lg:px-8 max-w-2xl">
         <FadeIn className="mb-12">
-          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">Real-time</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">What I&apos;m doing now</h1>
+          <SectionHeading eyebrow="Real-time" title="What I'm doing now" className="mb-4" />
           {s.now_updated_at && (
             <p className="flex items-center gap-2 text-sm text-muted-foreground">
               <CalendarDays className="h-4 w-4" />

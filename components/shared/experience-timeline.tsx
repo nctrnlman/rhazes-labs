@@ -22,7 +22,7 @@ export function ExperienceTimeline() {
                 <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                   <div>
                     <h3 className="font-semibold text-lg">{e.role}</h3>
-                    <p className="gradient-accent font-semibold text-sm">{e.company}</p>
+                    <p className="text-sm font-semibold text-accent">{e.company}</p>
                     <p className="text-xs text-muted-foreground mt-0.5">{e.type}</p>
                   </div>
                   <span className="text-xs text-muted-foreground bg-muted rounded-full px-3 py-1.5 flex-shrink-0 whitespace-nowrap">{e.period}</span>

@@ -33,10 +33,10 @@ export function HeroSection({ availability, resumeUrl }: Props) {
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-wrap gap-4">
-            <Button variant="pill" size="lg" render={<Link href="/projects" />}>
+            <Button variant="pill" size="lg" className="h-auto px-7 py-3.5" render={<Link href="/projects" />}>
               View Projects <ArrowRight className="h-4 w-4" />
             </Button>
-            <Button variant="pill-outline" size="lg" render={<Link href="/work-with-me" />}>
+            <Button variant="pill-outline" size="lg" className="h-auto px-7 py-3.5" render={<Link href="/work-with-me" />}>
               Work With Me
             </Button>
             {resumeUrl && (

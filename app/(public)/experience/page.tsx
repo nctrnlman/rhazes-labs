@@ -1,5 +1,6 @@
 import { ExperienceTimeline } from "@/components/shared/experience-timeline"
 import { FadeIn } from "@/components/shared/motion-wrapper"
+import { SectionHeading } from "@/components/shared/section-heading"
 import type { Metadata } from "next"
 export const metadata: Metadata = { title: "Experience" }
 
@@ -14,12 +15,11 @@ export default function ExperiencePage() {
     <div className="section-padding">
       <div className="container-custom px-4 sm:px-6 lg:px-8 max-w-3xl">
         <FadeIn className="mb-12">
-          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">Career Journey</p>
-          <h1 className="text-4xl sm:text-5xl font-bold">Experience</h1>
+          <SectionHeading eyebrow="Career Journey" title="Experience" />
         </FadeIn>
         <ExperienceTimeline />
         <FadeIn className="mt-4">
-          <h2 className="text-2xl font-bold mb-8">Education</h2>
+          <h2 className="mb-8 text-2xl font-semibold">Education</h2>
           <div className="space-y-4">
             {education.map((e) => (
               <div key={e.school} className="bg-card border border-border rounded-2xl p-6">

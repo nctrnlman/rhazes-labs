@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Mail, Send, MapPin, Clock } from "lucide-react"
 import { toast } from "sonner"
 import { FadeIn } from "@/components/shared/motion-wrapper"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { Button } from "@/components/ui/button"
 
 const contactTypes = [
   { value: "recruiter", label: "Recruiter" },
@@ -44,14 +46,12 @@ export default function ContactPage() {
     <main className="pt-24 pb-20">
       <div className="container-custom">
         <FadeIn>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Let&apos;s Work{" "}
-              <span className="gradient-text">Together</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind? I&apos;d love to hear about it. Send me a message and I&apos;ll get back to you within 24 hours.
-            </p>
+          <div className="mb-16">
+            <SectionHeading
+              title="Let's Work Together"
+              description="Have a project in mind? I'd love to hear about it. Send me a message and I'll get back to you within 24 hours."
+              align="center"
+            />
           </div>
         </FadeIn>
 
@@ -59,12 +59,12 @@ export default function ContactPage() {
           <FadeIn delay={0.1} className="lg:col-span-1 space-y-8">
             <div className="bg-card border border-border rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-blue-500" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
+                  <Mail className="h-5 w-5 text-accent" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <a href="mailto:rhazesd@gmail.com" className="font-medium hover:text-blue-500 transition-colors">
+                  <a href="mailto:rhazesd@gmail.com" className="font-medium transition-colors hover:text-accent">
                     rhazesd@gmail.com
                   </a>
                 </div>
@@ -73,8 +73,8 @@ export default function ContactPage() {
 
             <div className="bg-card border border-border rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-blue-500" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
+                  <MapPin className="h-5 w-5 text-accent" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
@@ -85,8 +85,8 @@ export default function ContactPage() {
 
             <div className="bg-card border border-border rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-blue-500" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
+                  <Clock className="h-5 w-5 text-accent" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Response Time</p>
@@ -102,7 +102,7 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-6">
                   <Send className="w-8 h-8 text-green-500" />
                 </div>
-                <h2 className="text-2xl font-bold mb-3">Message Sent!</h2>
+                <h2 className="mb-3 text-2xl font-semibold">Message Sent!</h2>
                 <p className="text-muted-foreground">
                   Thanks for reaching out. I&apos;ll review your message and get back to you within 24 hours.
                 </p>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                       type="text"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors"
                       placeholder="Muhammad Rhazes"
                     />
                   </div>
@@ -132,7 +132,7 @@ export default function ContactPage() {
                       type="email"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors"
                       placeholder="you@example.com"
                     />
                   </div>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                     id="type"
                     value={form.type}
                     onChange={(e) => setForm({ ...form, type: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors"
                   >
                     <option value="">Select type...</option>
                     {contactTypes.map((t) => (
@@ -164,25 +164,21 @@ export default function ContactPage() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     rows={6}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors resize-none"
                     placeholder="Tell me about your project, timeline, and budget..."
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full btn-primary py-4 rounded-xl font-semibold flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                >
+                <Button type="submit" disabled={loading} variant="pill" size="lg" className="h-auto w-full justify-center px-6 py-4">
                   {loading ? (
-                    <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
+                      <Send className="h-5 w-5" />
                       Send Message
                     </>
                   )}
-                </button>
+                </Button>
               </form>
             )}
           </FadeIn>
