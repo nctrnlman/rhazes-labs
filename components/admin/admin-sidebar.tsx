@@ -5,13 +5,17 @@ import { usePathname } from "next/navigation"
 import { signOut } from "next-auth/react"
 import {
   LayoutDashboard, FolderOpen, FileText, MessageSquare,
-  Star, BookOpen, Settings, LogOut, ExternalLink, Users
+  Star, BookOpen, Settings, LogOut, ExternalLink, Users,
+  Briefcase, GraduationCap, Sparkles
 } from "lucide-react"
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/projects", label: "Projects", icon: FolderOpen },
   { href: "/admin/blog", label: "Blog", icon: FileText },
+  { href: "/admin/experience", label: "Experience", icon: Briefcase },
+  { href: "/admin/education", label: "Education", icon: GraduationCap },
+  { href: "/admin/skills", label: "Skills", icon: Sparkles },
   { href: "/admin/leads", label: "Leads", icon: MessageSquare },
   { href: "/admin/testimonials", label: "Testimonials", icon: Star },
   { href: "/admin/guestbook", label: "Guestbook", icon: BookOpen },

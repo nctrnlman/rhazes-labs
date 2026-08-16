@@ -12,8 +12,18 @@ export const metadata: Metadata = {
 }
 
 export default async function AboutPage() {
-  const settings = await prisma.setting.findMany()
+  const [settings, skills] = await Promise.all([
+    prisma.setting.findMany(),
+    prisma.skill.findMany({ orderBy: { order: "asc" } }),
+  ])
   const s = Object.fromEntries(settings.map((x) => [x.key, x.value]))
+  const categories = Object.values(
+    skills.reduce<Record<string, { name: string; skills: { id: string; name: string; level: string }[] }>>((acc, sk) => {
+      acc[sk.category] ??= { name: sk.category, skills: [] }
+      acc[sk.category].skills.push({ id: sk.id, name: sk.name, level: sk.level })
+      return acc
+    }, {})
+  )
   return (
     <div className="section-padding">
       <div className="container-custom px-4 sm:px-6 lg:px-8 max-w-5xl">
@@ -33,7 +43,7 @@ export default async function AboutPage() {
         </FadeIn>
         <FadeIn delay={0.2}>
           <h2 className="mb-8 text-2xl font-semibold">Skills & Expertise</h2>
-          <SkillsVisualization />
+          <SkillsVisualization categories={categories} />
         </FadeIn>
         <FadeIn delay={0.3} className="mt-14 p-6 bg-card border border-border rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div className="flex items-center gap-3">
