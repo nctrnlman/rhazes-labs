@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import { Calendar, Clock, Eye, Tag, ArrowLeft, ArrowRight } from "lucide-react"
@@ -13,9 +14,11 @@ export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }))
 }
 
+const getPost = cache((slug: string) => prisma.blogPost.findUnique({ where: { slug } }))
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = await prisma.blogPost.findUnique({ where: { slug } })
+  const post = await getPost(slug)
   if (!post) return { title: "Not Found" }
   const description = post.content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 160)
   return {
@@ -45,8 +48,8 @@ async function incrementView(slug: string) {
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = await prisma.blogPost.findUnique({ where: { slug, status: "published" } })
-  if (!post) notFound()
+  const post = await getPost(slug)
+  if (!post || post.status !== "published") notFound()
 
   await incrementView(slug)
 

@@ -1,3 +1,4 @@
+import { cache } from "react"
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import { ArrowLeft, ExternalLink, Code2, Tag, TrendingUp, Lock } from "lucide-react"
@@ -9,9 +10,11 @@ export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
 }
 
+const getProject = cache((slug: string) => prisma.project.findUnique({ where: { slug } }))
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const project = await prisma.project.findUnique({ where: { slug } })
+  const project = await getProject(slug)
   if (!project) return { title: "Not Found" }
   return {
     title: project.title,
@@ -29,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const project = await prisma.project.findUnique({ where: { slug } })
+  const project = await getProject(slug)
   if (!project) notFound()
 
   const metrics = project.impactMetrics as Record<string, string> | null
