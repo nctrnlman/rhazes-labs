@@ -46,6 +46,9 @@ export function HeroSection({ availability, resumeUrl }: Props) {
                 <Download className="h-4 w-4" /> Resume
               </a>
             )}
+            <a href="/api/portfolio-pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+              <Download className="h-4 w-4" /> Download Portfolio
+            </a>
           </motion.div>
         </div>
         <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }}

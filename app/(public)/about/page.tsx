@@ -1,4 +1,5 @@
-import { Clock } from "lucide-react"
+import { Clock, Download } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { FadeIn } from "@/components/shared/motion-wrapper"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { SkillsVisualization } from "@/components/shared/skills-visualization"
@@ -53,7 +54,12 @@ export default async function AboutPage() {
               <p className="text-sm text-muted-foreground">{s.response_time ?? "Usually responds within 24 hours"}</p>
             </div>
           </div>
-          <CopyEmailButton email="rhazesd@gmail.com" />
+          <div className="flex items-center gap-3">
+            <CopyEmailButton email="rhazesd@gmail.com" />
+            <Button variant="pill-outline" className="h-auto px-4 py-2.5 text-sm" nativeButton={false} render={<a href="/api/portfolio-pdf" target="_blank" rel="noopener noreferrer" />}>
+              <Download className="h-4 w-4" /> Download Portfolio
+            </Button>
+          </div>
         </FadeIn>
       </div>
     </div>
