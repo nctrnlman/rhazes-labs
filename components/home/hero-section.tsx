@@ -1,61 +1,56 @@
 "use client"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowRight, Download, Sparkles } from "lucide-react"
+import { ArrowRight, Download, User } from "lucide-react"
 import { AvailabilityBadge } from "@/components/shared/availability-badge"
+import { ScrollStory } from "@/components/shared/motion-wrapper"
+import { Button } from "@/components/ui/button"
 
 interface Props { availability?: { status: string; label: string }; resumeUrl?: string }
 
 export function HeroSection({ availability, resumeUrl }: Props) {
   return (
-    <section className="relative min-h-dvh flex items-center overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 h-80 w-80 rounded-full bg-blue-500/8 blur-3xl animate-float" />
-        <div className="absolute bottom-1/3 right-1/4 h-96 w-96 rounded-full bg-cyan-500/6 blur-3xl animate-float [animation-delay:3s]" />
-        <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/5 blur-3xl animate-float [animation-delay:5s]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.04)_1px,transparent_1px)] bg-[size:48px_48px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80" />
-      </div>
-      <div className="container-custom section-padding w-full">
-        <div className="max-w-4xl">
+    <ScrollStory className="border-b border-border">
+      <div className="container-custom section-padding grid w-full items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+        <div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <AvailabilityBadge status={availability?.status} label={availability?.label} className="mb-8" />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-6">
+            <h1 className="mb-6 text-5xl font-semibold leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
               Hi, I&apos;m<br />
-              <span className="gradient-accent">Rhazes</span>
+              <span className="text-accent">Rhazes</span>
             </h1>
           </motion.div>
           <motion.p initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl sm:text-2xl text-muted-foreground mb-3 font-light tracking-wide">
+            className="mb-3 text-xl font-light tracking-wide text-muted-foreground sm:text-2xl">
             Full Stack Engineer · Founder @ Codenito · Builder
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base sm:text-lg text-muted-foreground/80 max-w-2xl mb-12 leading-relaxed">
+            className="mb-12 max-w-2xl text-base leading-relaxed text-muted-foreground/80 sm:text-lg">
             Building scalable, production-grade systems that empower businesses and communities.
             Based in <strong className="text-foreground/70">Jakarta</strong> — working globally.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-wrap gap-4">
-            <Link href="/projects" className="inline-flex items-center gap-2 bg-accent text-white rounded-full px-7 py-3.5 text-sm font-semibold hover:bg-accent/90 transition-all duration-200 shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5">
+            <Button variant="pill" size="lg" render={<Link href="/projects" />}>
               View Projects <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link href="/work-with-me" className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-7 py-3.5 text-sm font-semibold hover:border-accent/30 transition-all duration-200 hover:-translate-y-0.5">
+            </Button>
+            <Button variant="pill-outline" size="lg" render={<Link href="/work-with-me" />}>
               Work With Me
-            </Link>
+            </Button>
             {resumeUrl && (
-              <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-4 py-3.5">
+              <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
                 <Download className="h-4 w-4" /> Resume
               </a>
             )}
           </motion.div>
         </div>
+        <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
+          className="hidden aspect-[4/5] items-center justify-center rounded-3xl border border-border bg-muted lg:flex">
+          <User className="h-16 w-16 text-muted-foreground/30" strokeWidth={1} />
+        </motion.div>
       </div>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <div className="w-px h-12 bg-gradient-to-b from-transparent to-border animate-pulse" />
-      </motion.div>
-    </section>
+    </ScrollStory>
   )
 }

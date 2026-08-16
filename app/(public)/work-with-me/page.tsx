@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/shared/motion-wrapper"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { Button } from "@/components/ui/button"
 import { Code2, Layers, MessageSquare, ArrowRight, CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
 export const metadata: Metadata = { title: "Work With Me" }
@@ -16,10 +18,13 @@ export default function WorkWithMePage() {
   return (
     <div className="section-padding">
       <div className="container-custom px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-16 max-w-2xl mx-auto">
-          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">Hire Me</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Let&apos;s build something together</h1>
-          <p className="text-muted-foreground text-lg leading-relaxed">Available for freelance projects, full-time opportunities, and technical consulting via Codenito ID.</p>
+        <FadeIn className="mx-auto mb-16 max-w-2xl text-center">
+          <SectionHeading
+            eyebrow="Hire Me"
+            title="Let's build something together"
+            description="Available for freelance projects, full-time opportunities, and technical consulting via Codenito ID."
+            align="center"
+          />
         </FadeIn>
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           {services.map((s) => (
@@ -37,7 +42,7 @@ export default function WorkWithMePage() {
           ))}
         </StaggerContainer>
         <FadeIn className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-10">How it works</h2>
+          <h2 className="mb-10 text-center text-2xl font-semibold">How it works</h2>
           <div className="space-y-4">
             {steps.map((step, i) => (
               <div key={step} className="flex items-center gap-5 bg-card border border-border rounded-xl p-5">
@@ -47,9 +52,9 @@ export default function WorkWithMePage() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-accent text-white rounded-full px-8 py-4 font-semibold hover:bg-accent/90 transition-all hover:-translate-y-0.5 shadow-lg shadow-accent/25">
+            <Button variant="pill" size="lg" render={<Link href="/contact" />}>
               Start a conversation <ArrowRight className="h-4 w-4" />
-            </Link>
+            </Button>
           </div>
         </FadeIn>
       </div>

@@ -1,5 +1,6 @@
 import { Code2, Layers, MessageSquare } from "lucide-react"
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/shared/motion-wrapper"
+import { SectionHeading } from "@/components/shared/section-heading"
 
 const services = [
   { icon: Code2, title: "Full Stack Engineer", desc: "End-to-end development from database architecture to polished UI. React, Next.js, NestJS, PostgreSQL, and more." },
@@ -11,9 +12,8 @@ export function ServicesSection() {
   return (
     <section className="section-padding bg-card/10">
       <div className="container-custom px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-14">
-          <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-3">What I Offer</p>
-          <h2 className="text-3xl sm:text-4xl font-bold">How I can help you</h2>
+        <FadeIn className="mb-14">
+          <SectionHeading eyebrow="What I Offer" title="How I can help you" align="center" />
         </FadeIn>
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((s) => (

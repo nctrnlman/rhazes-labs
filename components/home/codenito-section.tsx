@@ -13,7 +13,7 @@ export function CodenitoSection() {
   return (
     <section className="section-padding">
       <div className="container-custom px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-card border border-border border border-border/50 p-8 sm:p-12 overflow-hidden relative">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 sm:p-12">
           <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent/8 blur-3xl" />
           <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-cyan-500/6 blur-3xl" />
           <FadeIn className="relative grid md:grid-cols-2 gap-10 items-center">
