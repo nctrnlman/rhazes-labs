@@ -19,8 +19,8 @@ export function ServicesSection() {
           {services.map((s) => (
             <StaggerItem key={s.title}>
               <div className="bg-card border border-border rounded-2xl p-8 h-full hover:border-accent/30 transition-all duration-300 group">
-                <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                  <s.icon className="h-6 w-6 text-accent" />
+                <div className="h-12 w-12 rounded-xl bg-muted flex items-center justify-center mb-6 group-hover:bg-foreground/10 transition-colors">
+                  <s.icon className="h-6 w-6 text-foreground" />
                 </div>
                 <h3 className="font-semibold text-lg mb-3">{s.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>

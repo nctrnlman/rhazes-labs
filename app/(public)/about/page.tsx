@@ -48,7 +48,7 @@ export default async function AboutPage() {
         </FadeIn>
         <FadeIn delay={0.3} className="mt-14 p-6 bg-card border border-border rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div className="flex items-center gap-3">
-            <Clock className="h-5 w-5 text-accent flex-shrink-0" />
+            <Clock className="h-5 w-5 text-foreground flex-shrink-0" />
             <div>
               <p className="font-medium text-sm">Response Time</p>
               <p className="text-sm text-muted-foreground">{s.response_time ?? "Usually responds within 24 hours"}</p>

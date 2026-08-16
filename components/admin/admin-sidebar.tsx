@@ -30,7 +30,7 @@ export function AdminSidebar() {
     <aside className="w-64 min-h-screen border-r border-border bg-background/80 backdrop-blur-xl flex flex-col">
       <div className="p-6 border-b border-border">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-semibold text-accent-foreground">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-foreground text-sm font-semibold text-background">
             R
           </div>
           <div>
@@ -50,7 +50,7 @@ export function AdminSidebar() {
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                 active
-                  ? "bg-accent/10 text-accent"
+                  ? "bg-foreground/10 text-foreground"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >

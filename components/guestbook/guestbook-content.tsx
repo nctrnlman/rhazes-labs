@@ -57,7 +57,7 @@ export function GuestbookContent() {
         <FadeIn>
           <div className="text-center mb-16">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium">
-              <BookOpen className="h-4 w-4 text-accent" />
+              <BookOpen className="h-4 w-4 text-foreground" />
               Guestbook
             </div>
             <SectionHeading title="Leave a Mark" description="Sign my guestbook and let me know you stopped by." align="center" />

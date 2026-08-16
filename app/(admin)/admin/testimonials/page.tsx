@@ -34,7 +34,7 @@ export default async function AdminTestimonialsPage() {
                   {t.avatarUrl ? (
                     <img src={t.avatarUrl} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
                   ) : (
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-accent-foreground">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-foreground font-semibold text-background">
                       {t.name[0]}
                     </div>
                   )}

@@ -34,12 +34,12 @@ export default function WorkWithMePage() {
           {services.map((s) => (
             <StaggerItem key={s.title}>
               <div className="bg-card border border-border rounded-2xl p-8 h-full">
-                <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                  <s.icon className="h-6 w-6 text-accent" />
+                <div className="h-12 w-12 rounded-xl bg-muted flex items-center justify-center mb-6">
+                  <s.icon className="h-6 w-6 text-foreground" />
                 </div>
                 <h3 className="font-semibold text-lg mb-4">{s.title}</h3>
                 <ul className="space-y-2">
-                  {s.items.map((item) => <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />{item}</li>)}
+                  {s.items.map((item) => <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle className="h-4 w-4 text-foreground mt-0.5 flex-shrink-0" />{item}</li>)}
                 </ul>
               </div>
             </StaggerItem>
@@ -50,7 +50,7 @@ export default function WorkWithMePage() {
           <div className="space-y-4">
             {steps.map((step, i) => (
               <div key={step} className="flex items-center gap-5 bg-card border border-border rounded-xl p-5">
-                <span className="h-9 w-9 rounded-full bg-accent/10 text-accent font-bold text-sm flex items-center justify-center flex-shrink-0">{i + 1}</span>
+                <span className="h-9 w-9 rounded-full bg-muted text-foreground font-bold text-sm flex items-center justify-center flex-shrink-0">{i + 1}</span>
                 <p className="font-medium">{step}</p>
               </div>
             ))}

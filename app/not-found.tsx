@@ -12,7 +12,7 @@ export default function NotFound() {
           <p className="mb-4 text-8xl font-semibold text-foreground">404</p>
           <div className="bg-card border border-border rounded-2xl p-6 max-w-md mx-auto font-mono text-sm text-left">
             <p className="text-muted-foreground">
-              <span className="text-accent">const</span>{" "}
+              <span className="text-foreground font-semibold">const</span>{" "}
               <span className="text-green-500">page</span> ={" "}
               <span className="text-orange-500">await</span> findPage(url)
             </p>

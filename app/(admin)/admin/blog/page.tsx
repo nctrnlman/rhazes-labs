@@ -32,7 +32,7 @@ export default async function AdminBlogPage() {
                 {post.coverImage ? (
                   <img src={post.coverImage} alt={post.title} className="w-16 h-12 rounded-lg object-cover flex-shrink-0" />
                 ) : (
-                  <div className="h-12 w-16 flex-shrink-0 rounded-lg bg-accent/20" />
+                  <div className="h-12 w-16 flex-shrink-0 rounded-lg bg-muted" />
                 )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">

@@ -40,7 +40,7 @@ export function Navbar({ availabilityStatus, availabilityLabel }: { availability
       <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", scrolled ? "glass shadow-sm py-3" : "py-5")}>
         <nav className="container-custom flex items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-1.5">
-            <span className="text-lg font-semibold text-accent">Rhazes</span>
+            <span className="text-lg font-semibold text-foreground">Rhazes</span>
             <span className="text-muted-foreground text-sm font-mono">.labs</span>
           </Link>
           <div className="hidden md:flex items-center gap-7">

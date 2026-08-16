@@ -32,7 +32,7 @@ export default async function AdminEducationPage() {
               <div key={e.id} className="p-5 flex items-start justify-between gap-4">
                 <div>
                   <p className="font-semibold">{e.school}</p>
-                  <p className="text-sm text-accent">{e.degree}</p>
+                  <p className="text-sm text-foreground">{e.degree}</p>
                   <p className="text-xs text-muted-foreground mt-0.5">{e.location} · {e.period}</p>
                 </div>
                 <div className="flex items-center gap-3 flex-shrink-0">

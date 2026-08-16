@@ -14,11 +14,11 @@ export function CodenitoSection() {
     <section className="section-padding">
       <div className="container-custom px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 sm:p-12">
-          <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent/8 blur-3xl" />
+          <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-foreground/8 blur-3xl" />
           <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-foreground/5 blur-3xl" />
           <FadeIn className="relative grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-4">My Studio</p>
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">My Studio</p>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">Codenito ID</h2>
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-md">
                 A remote-first software studio I founded in 2022. We deliver production-grade systems for clients in e-commerce, healthcare, logistics, and FMCG — with 100% on-time delivery record.
@@ -30,7 +30,7 @@ export function CodenitoSection() {
             <div className="grid grid-cols-2 gap-4">
               {coStats.map((s) => (
                 <div key={s.label} className="bg-background/40 rounded-2xl p-5 border border-border/50 hover:border-accent/30 transition-colors">
-                  <s.icon className="h-5 w-5 text-accent mb-3" />
+                  <s.icon className="h-5 w-5 text-foreground mb-3" />
                   <p className="text-2xl font-bold mb-1">{s.value}</p>
                   <p className="text-xs text-muted-foreground">{s.label}</p>
                 </div>

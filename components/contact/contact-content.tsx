@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Send, MapPin, Clock } from "lucide-react"
+import { Mail, Send, MapPin, Clock, MessageCircle } from "lucide-react"
 import { toast } from "sonner"
 import { FadeIn } from "@/components/shared/motion-wrapper"
 import { SectionHeading } from "@/components/shared/section-heading"
@@ -59,8 +59,8 @@ export function ContactContent() {
           <FadeIn delay={0.1} className="lg:col-span-1 space-y-8">
             <div className="bg-card border border-border rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
-                  <Mail className="h-5 w-5 text-accent" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
+                  <Mail className="h-5 w-5 text-foreground" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
@@ -73,8 +73,22 @@ export function ContactContent() {
 
             <div className="bg-card border border-border rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
-                  <MapPin className="h-5 w-5 text-accent" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
+                  <MessageCircle className="h-5 w-5 text-foreground" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">WhatsApp</p>
+                  <a href="https://wa.me/6281221431716" target="_blank" rel="noopener noreferrer" className="font-medium transition-colors hover:text-accent">
+                    +62 812-2143-1716
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
+                  <MapPin className="h-5 w-5 text-foreground" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
@@ -85,8 +99,8 @@ export function ContactContent() {
 
             <div className="bg-card border border-border rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
-                  <Clock className="h-5 w-5 text-accent" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
+                  <Clock className="h-5 w-5 text-foreground" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Response Time</p>

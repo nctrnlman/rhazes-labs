@@ -42,6 +42,8 @@ const settingGroups = [
       { key: "site_description", label: "Default Meta Description", placeholder: "Full Stack Engineer, Founder of Codenito ID..." },
       { key: "social_github", label: "GitHub URL", placeholder: "https://github.com/yourusername" },
       { key: "social_linkedin", label: "LinkedIn URL", placeholder: "https://linkedin.com/in/yourusername" },
+      { key: "social_instagram", label: "Instagram URL", placeholder: "https://instagram.com/yourusername" },
+      { key: "social_whatsapp", label: "WhatsApp Link", placeholder: "https://wa.me/62..." },
     ],
   },
 ]

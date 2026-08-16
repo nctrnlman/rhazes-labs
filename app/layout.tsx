@@ -21,10 +21,11 @@ const DEFAULT_DESCRIPTION =
   "Full Stack Engineer, Founder of Codenito ID. Building scalable, production-grade systems. Based in Jakarta, working globally."
 const DEFAULT_GITHUB = "https://github.com/rhazes"
 const DEFAULT_LINKEDIN = "https://linkedin.com/in/rhazes"
+const DEFAULT_INSTAGRAM = "https://www.instagram.com/rhazes.d/"
 
 const getSiteSettings = cache(async () => {
   const rows = await prisma.setting.findMany({
-    where: { key: { in: ["site_name", "site_description", "social_github", "social_linkedin"] } },
+    where: { key: { in: ["site_name", "site_description", "social_github", "social_linkedin", "social_instagram"] } },
   })
   const map = Object.fromEntries(rows.map((r) => [r.key, r.value]))
   return {
@@ -32,6 +33,7 @@ const getSiteSettings = cache(async () => {
     description: map.site_description || DEFAULT_DESCRIPTION,
     github: map.social_github || DEFAULT_GITHUB,
     linkedin: map.social_linkedin || DEFAULT_LINKEDIN,
+    instagram: map.social_instagram || DEFAULT_INSTAGRAM,
   }
 })
 

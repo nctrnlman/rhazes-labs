@@ -19,7 +19,7 @@ export function HowIWorkSection() {
           {steps.map((s) => (
             <StaggerItem key={s.num}>
               <div className="relative p-6 rounded-2xl bg-card border border-border hover:border-accent/20 transition-all duration-300 h-full">
-                <span className="mb-3 block text-6xl font-semibold leading-none text-accent opacity-15">{s.num}</span>
+                <span className="mb-3 block text-6xl font-semibold leading-none text-foreground opacity-15">{s.num}</span>
                 <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
               </div>

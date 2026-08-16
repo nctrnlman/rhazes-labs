@@ -51,7 +51,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         )}
 
         <div className="flex flex-wrap items-center gap-3 mb-4">
-          <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium capitalize text-accent">
+          <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium capitalize text-foreground">
             {project.category}
           </span>
         </div>
@@ -80,7 +80,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         {metrics && Object.keys(metrics).length > 0 && (
           <div className="mb-12">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-accent" /> Results
+              <TrendingUp className="h-5 w-5 text-foreground" /> Results
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {Object.entries(metrics).map(([key, value]) => (
@@ -96,7 +96,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         {project.techStack.length > 0 && (
           <div className="mb-12">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <Tag className="h-5 w-5 text-accent" /> Tech Stack
+              <Tag className="h-5 w-5 text-foreground" /> Tech Stack
             </h2>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (

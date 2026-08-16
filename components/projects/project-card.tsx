@@ -20,7 +20,7 @@ export function ProjectCard({ title, slug, description, techStack, imageUrl, liv
           </div>
         ) : (
           <div className="flex h-48 items-center justify-center bg-muted">
-            <span className="text-5xl font-bold text-accent/20">{title[0]}</span>
+            <span className="text-5xl font-bold text-foreground/15">{title[0]}</span>
           </div>
         )}
         <div className="p-6">
@@ -29,7 +29,7 @@ export function ProjectCard({ title, slug, description, techStack, imageUrl, liv
           {impactMetrics && (
             <div className="flex flex-wrap gap-2 mb-4">
               {Object.entries(impactMetrics).slice(0, 2).map(([k, v]) => (
-                <span key={k} className="text-xs bg-accent/10 text-accent rounded-full px-2.5 py-0.5 font-medium">{v} {k}</span>
+                <span key={k} className="text-xs bg-muted text-foreground rounded-full px-2.5 py-0.5 font-medium">{v} {k}</span>
               ))}
             </div>
           )}

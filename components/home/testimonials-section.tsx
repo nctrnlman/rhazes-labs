@@ -27,13 +27,13 @@ export async function TestimonialsSection() {
           {testimonials.map((t) => (
             <StaggerItem key={t.id}>
               <div className="bg-card border border-border rounded-2xl p-6 h-full flex flex-col">
-                <Quote className="mb-4 h-8 w-8 text-accent/30" />
+                <Quote className="mb-4 h-8 w-8 text-foreground/20" />
                 <p className="text-muted-foreground leading-relaxed flex-1 mb-6">&ldquo;{t.message}&rdquo;</p>
                 <div className="flex items-center gap-3">
                   {t.avatarUrl ? (
                     <img src={t.avatarUrl} alt={t.name} className="w-10 h-10 rounded-full object-cover" />
                   ) : (
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-accent-foreground">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-foreground font-semibold text-background">
                       {t.name[0]}
                     </div>
                   )}

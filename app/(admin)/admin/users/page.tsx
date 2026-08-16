@@ -38,7 +38,7 @@ export default async function AdminUsersPage() {
 
       <div className="bg-card border border-border rounded-2xl p-6">
         <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-          <UserPlus className="h-5 w-5 text-accent" /> Add a user
+          <UserPlus className="h-5 w-5 text-foreground" /> Add a user
         </h2>
         <form action={createUser} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">

@@ -33,8 +33,8 @@ export default async function AdminDashboardPage() {
           const Icon = stat.icon
           return (
             <div key={stat.label} className="bg-card border border-border rounded-2xl p-6">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
-                <Icon className="h-5 w-5 text-accent" />
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
+                <Icon className="h-5 w-5 text-foreground" />
               </div>
               <p className="text-3xl font-semibold">{stat.value}</p>
               <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
@@ -58,7 +58,7 @@ export default async function AdminDashboardPage() {
                 <div className="flex items-center gap-3">
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                     lead.status === "new" ? "bg-green-500/10 text-green-500" :
-                    lead.status === "read" ? "bg-accent/10 text-accent" :
+                    lead.status === "read" ? "bg-muted text-foreground" :
                     "bg-muted text-muted-foreground"
                   }`}>
                     {lead.status}

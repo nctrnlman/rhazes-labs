@@ -27,7 +27,7 @@ export default async function AdminLeadsPage() {
                       <p className="font-semibold">{lead.name}</p>
                       <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                         lead.status === "new" ? "bg-green-500/10 text-green-500" :
-                        lead.status === "read" ? "bg-accent/10 text-accent" :
+                        lead.status === "read" ? "bg-muted text-foreground" :
                         "bg-muted text-muted-foreground"
                       }`}>
                         {lead.status}

@@ -33,8 +33,8 @@ export default async function NowPage() {
           {items.map((item, i) => (
             <FadeIn key={item.label} delay={i * 0.1}>
               <div className="bg-card border border-border rounded-2xl p-6 flex gap-4 hover:border-accent/20 transition-colors">
-                <div className="h-11 w-11 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <item.icon className="h-5 w-5 text-accent" />
+                <div className="h-11 w-11 rounded-xl bg-muted flex items-center justify-center flex-shrink-0">
+                  <item.icon className="h-5 w-5 text-foreground" />
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">{item.label}</p>

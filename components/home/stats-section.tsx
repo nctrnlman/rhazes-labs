@@ -31,7 +31,7 @@ export function StatsSection({ stats }: { stats?: Record<string, string> }) {
         <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
           {items.map((item) => (
             <StaggerItem key={item.label} className="text-center">
-              <p className="mb-2 text-3xl font-semibold text-accent sm:text-4xl">
+              <p className="mb-2 text-3xl font-semibold text-foreground sm:text-4xl">
                 <Counter end={item.display} suffix={item.suffix} />
               </p>
               <p className="text-xs sm:text-sm text-muted-foreground">{item.label}</p>

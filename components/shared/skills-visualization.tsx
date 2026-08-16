@@ -5,7 +5,7 @@ type SkillItem = { id: string; name: string; level: string }
 type SkillCategory = { name: string; skills: SkillItem[] }
 
 const w: Record<string, string> = { Expert: "100%", Proficient: "70%", Learning: "40%" }
-const c: Record<string, string> = { Expert: "bg-accent", Proficient: "bg-accent/60", Learning: "bg-accent/30" }
+const c: Record<string, string> = { Expert: "bg-foreground", Proficient: "bg-foreground/60", Learning: "bg-foreground/30" }
 
 export function SkillsVisualization({ categories }: { categories: SkillCategory[] }) {
   return (
@@ -24,7 +24,7 @@ export function SkillsVisualization({ categories }: { categories: SkillCategory[
                   <span className="text-xs text-muted-foreground">{sk.level}</span>
                 </div>
                 <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                  <div className={`h-full rounded-full ${c[sk.level] ?? "bg-accent/60"} transition-all duration-700`} style={{ width: w[sk.level] ?? "70%" }} />
+                  <div className={`h-full rounded-full ${c[sk.level] ?? "bg-foreground/60"} transition-all duration-700`} style={{ width: w[sk.level] ?? "70%" }} />
                 </div>
               </StaggerItem>
             ))}
