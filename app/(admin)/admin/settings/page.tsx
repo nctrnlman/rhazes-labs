@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
+import { Button } from "@/components/ui/button"
 
 const settingGroups = [
   {
@@ -58,7 +59,7 @@ export default async function AdminSettingsPage() {
   return (
     <div className="p-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold">Settings</h1>
+        <h1 className="text-2xl font-semibold">Settings</h1>
         <p className="text-muted-foreground">Manage site-wide content from here.</p>
       </div>
 
@@ -79,7 +80,7 @@ export default async function AdminSettingsPage() {
                       type="text"
                       defaultValue={settingsMap[setting.key] || ""}
                       placeholder={setting.placeholder}
-                      className="w-full px-4 py-2.5 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-colors text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-border bg-background/50 text-sm transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/50"
                     />
                   </div>
                 ))}
@@ -89,12 +90,9 @@ export default async function AdminSettingsPage() {
         </div>
 
         <div className="mt-6">
-          <button
-            type="submit"
-            className="btn-primary px-8 py-3 rounded-xl font-semibold text-sm"
-          >
+          <Button type="submit" variant="pill" className="h-auto px-8 py-3 text-sm">
             Save All Settings
-          </button>
+          </Button>
         </div>
       </form>
     </div>

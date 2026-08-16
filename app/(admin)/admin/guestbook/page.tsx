@@ -27,7 +27,7 @@ export default async function AdminGuestbookPage() {
   return (
     <div className="p-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold">Guestbook</h1>
+        <h1 className="text-2xl font-semibold">Guestbook</h1>
         <p className="text-muted-foreground">{pending.length} pending · {approved.length} approved</p>
       </div>
 

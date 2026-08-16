@@ -7,7 +7,7 @@ export default async function AdminLeadsPage() {
   return (
     <div className="p-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold">Leads</h1>
+        <h1 className="text-2xl font-semibold">Leads</h1>
         <p className="text-muted-foreground">{leads.length} total contacts</p>
       </div>
 
@@ -27,7 +27,7 @@ export default async function AdminLeadsPage() {
                       <p className="font-semibold">{lead.name}</p>
                       <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                         lead.status === "new" ? "bg-green-500/10 text-green-500" :
-                        lead.status === "read" ? "bg-blue-500/10 text-blue-500" :
+                        lead.status === "read" ? "bg-accent/10 text-accent" :
                         "bg-muted text-muted-foreground"
                       }`}>
                         {lead.status}
@@ -38,7 +38,7 @@ export default async function AdminLeadsPage() {
                     </div>
                     <a
                       href={`mailto:${lead.email}`}
-                      className="flex items-center gap-1 text-sm text-blue-500 hover:underline mb-3"
+                      className="mb-3 flex items-center gap-1 text-sm text-accent hover:underline"
                     >
                       <Mail className="w-3 h-3" />{lead.email}
                     </a>

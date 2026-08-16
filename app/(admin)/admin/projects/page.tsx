@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { Plus, ExternalLink, Code2, Star } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default async function AdminProjectsPage() {
   const projects = await prisma.project.findMany({ orderBy: [{ order: "asc" }, { createdAt: "desc" }] })
@@ -9,15 +10,12 @@ export default async function AdminProjectsPage() {
     <div className="p-8">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold">Projects</h1>
+          <h1 className="text-2xl font-semibold">Projects</h1>
           <p className="text-muted-foreground">{projects.length} projects</p>
         </div>
-        <Link
-          href="/admin/projects/new"
-          className="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2"
-        >
-          <Plus className="w-4 h-4" /> Add Project
-        </Link>
+        <Button variant="pill" className="h-auto px-5 py-2.5 text-sm" render={<Link href="/admin/projects/new" />}>
+          <Plus className="h-4 w-4" /> Add Project
+        </Button>
       </div>
 
       <div className="bg-card border border-border rounded-2xl overflow-hidden">
@@ -32,7 +30,7 @@ export default async function AdminProjectsPage() {
                 {project.imageUrl ? (
                   <img src={project.imageUrl} alt={project.title} className="w-16 h-12 rounded-lg object-cover flex-shrink-0" />
                 ) : (
-                  <div className="w-16 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex-shrink-0" />
+                  <div className="h-12 w-16 flex-shrink-0 rounded-lg bg-accent/20" />
                 )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">

@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { Plus, Eye, Clock } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default async function AdminBlogPage() {
   const posts = await prisma.blogPost.findMany({ orderBy: { createdAt: "desc" } })
@@ -9,15 +10,12 @@ export default async function AdminBlogPage() {
     <div className="p-8">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold">Blog</h1>
+          <h1 className="text-2xl font-semibold">Blog</h1>
           <p className="text-muted-foreground">{posts.length} posts</p>
         </div>
-        <Link
-          href="/admin/blog/new"
-          className="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold flex items-center gap-2"
-        >
-          <Plus className="w-4 h-4" /> New Post
-        </Link>
+        <Button variant="pill" className="h-auto px-5 py-2.5 text-sm" render={<Link href="/admin/blog/new" />}>
+          <Plus className="h-4 w-4" /> New Post
+        </Button>
       </div>
 
       <div className="bg-card border border-border rounded-2xl overflow-hidden">
@@ -32,7 +30,7 @@ export default async function AdminBlogPage() {
                 {post.coverImage ? (
                   <img src={post.coverImage} alt={post.title} className="w-16 h-12 rounded-lg object-cover flex-shrink-0" />
                 ) : (
-                  <div className="w-16 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex-shrink-0" />
+                  <div className="h-12 w-16 flex-shrink-0 rounded-lg bg-accent/20" />
                 )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
@@ -56,7 +54,7 @@ export default async function AdminBlogPage() {
                 </div>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-xs text-blue-500 hover:underline flex-shrink-0"
+                  className="flex-shrink-0 text-xs text-accent hover:underline"
                 >
                   View
                 </Link>

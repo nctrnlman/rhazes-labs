@@ -8,7 +8,7 @@ export default async function AdminTestimonialsPage() {
     <div className="p-8">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold">Testimonials</h1>
+          <h1 className="text-2xl font-semibold">Testimonials</h1>
           <p className="text-muted-foreground">{testimonials.length} testimonials</p>
         </div>
       </div>
@@ -28,7 +28,7 @@ export default async function AdminTestimonialsPage() {
                   {t.avatarUrl ? (
                     <img src={t.avatarUrl} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
                   ) : (
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-white">
                       {t.name[0]}
                     </div>
                   )}

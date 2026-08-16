@@ -10,10 +10,10 @@ export default async function AdminDashboardPage() {
   ])
 
   const stats = [
-    { label: "Projects", value: projectCount, icon: FolderOpen, color: "blue" },
-    { label: "Published Posts", value: postCount, icon: FileText, color: "purple" },
-    { label: "New Leads", value: newLeads, icon: MessageSquare, color: "green" },
-    { label: "Pending Guestbook", value: pendingGuests, icon: BookOpen, color: "orange" },
+    { label: "Projects", value: projectCount, icon: FolderOpen },
+    { label: "Published Posts", value: postCount, icon: FileText },
+    { label: "New Leads", value: newLeads, icon: MessageSquare },
+    { label: "Pending Guestbook", value: pendingGuests, icon: BookOpen },
   ]
 
   const recentLeads = await prisma.lead.findMany({
@@ -24,7 +24,7 @@ export default async function AdminDashboardPage() {
   return (
     <div className="p-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <h1 className="text-2xl font-semibold">Dashboard</h1>
         <p className="text-muted-foreground">Welcome back, Rhazes.</p>
       </div>
 
@@ -33,10 +33,10 @@ export default async function AdminDashboardPage() {
           const Icon = stat.icon
           return (
             <div key={stat.label} className="bg-card border border-border rounded-2xl p-6">
-              <div className={`w-10 h-10 rounded-xl bg-${stat.color}-500/10 flex items-center justify-center mb-3`}>
-                <Icon className={`w-5 h-5 text-${stat.color}-500`} />
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
+                <Icon className="h-5 w-5 text-accent" />
               </div>
-              <p className="text-3xl font-bold">{stat.value}</p>
+              <p className="text-3xl font-semibold">{stat.value}</p>
               <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
             </div>
           )
@@ -58,7 +58,7 @@ export default async function AdminDashboardPage() {
                 <div className="flex items-center gap-3">
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                     lead.status === "new" ? "bg-green-500/10 text-green-500" :
-                    lead.status === "read" ? "bg-blue-500/10 text-blue-500" :
+                    lead.status === "read" ? "bg-accent/10 text-accent" :
                     "bg-muted text-muted-foreground"
                   }`}>
                     {lead.status}
