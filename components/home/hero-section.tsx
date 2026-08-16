@@ -53,17 +53,18 @@ export function HeroSection({ availability, resumeUrl }: Props) {
           </motion.div>
         </div>
         <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative hidden aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-muted lg:block">
-          <Image
-            src="/images/rhazes-profile.jpg"
-            alt="Rhazes Devino"
-            fill
-            className="object-cover grayscale contrast-125 brightness-95"
-            priority
-            quality={100}
-            sizes="(min-width: 1024px) 40vw, 100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+          className="hidden items-center justify-center lg:flex">
+          <div className="relative h-56 w-56 overflow-hidden rounded-full border border-border shadow-xl shadow-foreground/5 xl:h-64 xl:w-64">
+            <Image
+              src="/images/rhazes-profile.jpg"
+              alt="Rhazes Devino"
+              fill
+              className="object-cover grayscale contrast-125 brightness-95"
+              priority
+              quality={100}
+              sizes="256px"
+            />
+          </div>
         </motion.div>
       </div>
     </ScrollStory>
