@@ -1,76 +1,79 @@
 import { Document, Page, Text, View, StyleSheet, Link } from "@react-pdf/renderer"
 
-const ACCENT = "#2563EB"
-const ACCENT_SOFT = "#EFF4FF"
-const INK = "#18181B"
-const MUTED = "#71717A"
-const BORDER = "#E4E4E7"
+const INK = "#000000"
+const PAPER = "#FFFFFF"
+const MUTED = "#52525B"
+const FAINT = "#A1A1AA"
+const BORDER = "#E4E4E4"
 const CARD = "#FAFAFA"
 
 const styles = StyleSheet.create({
-  page: { padding: 44, fontSize: 10, color: INK, fontFamily: "Helvetica" },
+  page: { padding: 48, fontSize: 9.5, color: INK, fontFamily: "Helvetica", backgroundColor: PAPER },
 
-  // Header
-  name: { fontSize: 24, fontFamily: "Helvetica-Bold", letterSpacing: -0.5, marginBottom: 4 },
-  tagline: { fontSize: 12.5, color: ACCENT, fontFamily: "Helvetica-Bold", marginBottom: 10 },
-  contactRow: { flexDirection: "row", flexWrap: "wrap", columnGap: 12, rowGap: 3 },
-  contactItem: { fontSize: 8.5, color: MUTED },
-  headerRule: { height: 2, backgroundColor: ACCENT, width: 48, marginTop: 14, marginBottom: 16 },
-  summary: { fontSize: 10, color: MUTED, marginBottom: 22, lineHeight: 1.6, maxWidth: "85%" },
+  // Cover page
+  cover: { padding: 56, backgroundColor: INK, color: PAPER, height: "100%", justifyContent: "space-between" },
+  coverEyebrow: { fontSize: 11, color: FAINT, letterSpacing: 2, marginBottom: 18 },
+  coverName: { fontSize: 46, fontFamily: "Helvetica-Bold", lineHeight: 1.05, letterSpacing: -1 },
+  coverTagline: { fontSize: 16, color: FAINT, marginTop: 16, maxWidth: 420 },
+  coverRule: { height: 1, backgroundColor: "#3F3F46", marginBottom: 20 },
+  coverContactRow: { flexDirection: "row", gap: 28 },
+  coverContactLabel: { fontSize: 7.5, color: "#71717A", letterSpacing: 1, marginBottom: 3 },
+  coverContactValue: { fontSize: 10, color: PAPER },
+
+  // Header (content pages)
+  name: { fontSize: 20, fontFamily: "Helvetica-Bold", letterSpacing: -0.5, marginBottom: 3 },
+  tagline: { fontSize: 11, color: MUTED, marginBottom: 10 },
+  contactRow: { flexDirection: "row", flexWrap: "wrap", columnGap: 14, rowGap: 3, marginBottom: 14 },
+  contactItem: { fontSize: 8, color: MUTED },
+  summary: { fontSize: 9.5, color: MUTED, marginBottom: 20, lineHeight: 1.6, maxWidth: "70%" },
 
   // Section headings
-  sectionHeader: { flexDirection: "row", alignItems: "center", marginBottom: 12, marginTop: 6 },
-  sectionDot: { width: 6, height: 6, backgroundColor: ACCENT, marginRight: 7, borderRadius: 3 },
-  sectionTitle: { fontSize: 10, fontFamily: "Helvetica-Bold", letterSpacing: 1 },
-  sectionSub: { fontSize: 8.5, color: MUTED, marginLeft: "auto" },
+  sectionHeader: { flexDirection: "row", alignItems: "center", marginBottom: 12, marginTop: 4 },
+  sectionMark: { width: 14, height: 3, backgroundColor: INK, marginRight: 8 },
+  sectionTitle: { fontSize: 9.5, fontFamily: "Helvetica-Bold" },
+  sectionSub: { fontSize: 8, color: FAINT, marginLeft: "auto" },
 
-  // Project cards (portfolio-forward)
-  projectGrid: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginBottom: 22 },
-  projectCard: {
-    width: "48.5%",
-    backgroundColor: CARD,
-    border: `1px solid ${BORDER}`,
-    borderRadius: 6,
-    padding: 12,
-  },
-  projectTitle: { fontSize: 11, fontFamily: "Helvetica-Bold", marginBottom: 4 },
-  projectDesc: { fontSize: 8.5, color: MUTED, lineHeight: 1.45, marginBottom: 8 },
-  metricsRow: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginBottom: 8 },
-  metricChip: { backgroundColor: ACCENT_SOFT, borderRadius: 4, paddingVertical: 3, paddingHorizontal: 6 },
-  metricValue: { fontSize: 9, fontFamily: "Helvetica-Bold", color: ACCENT },
-  metricLabel: { fontSize: 6.5, color: MUTED, letterSpacing: 0.3 },
+  // Project cards
+  projectGrid: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginBottom: 24 },
+  projectCard: { width: "31.5%", backgroundColor: CARD, border: `1px solid ${BORDER}`, borderRadius: 4, padding: 12 },
+  projectTitle: { fontSize: 10.5, fontFamily: "Helvetica-Bold", marginBottom: 4 },
+  projectDesc: { fontSize: 8, color: MUTED, lineHeight: 1.45, marginBottom: 8 },
+  metricsRow: { flexDirection: "row", flexWrap: "wrap", gap: 5, marginBottom: 8 },
+  metricChip: { border: `1px solid ${INK}`, borderRadius: 3, paddingVertical: 3, paddingHorizontal: 6 },
+  metricValue: { fontSize: 8.5, fontFamily: "Helvetica-Bold", color: INK },
+  metricLabel: { fontSize: 6, color: MUTED, letterSpacing: 0.3 },
   projectTechRow: { flexDirection: "row", flexWrap: "wrap", gap: 4 },
-  projectTech: { fontSize: 7, color: MUTED },
-  projectLink: { fontSize: 7.5, color: ACCENT, marginTop: 6 },
+  projectTech: { fontSize: 6.5, color: FAINT },
+  projectLink: { fontSize: 7, color: INK, marginTop: 6, textDecoration: "underline" },
 
   // Experience
-  entry: { marginBottom: 12 },
+  entry: { marginBottom: 11 },
   entryHeaderRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start" },
-  entryTitle: { fontSize: 10.5, fontFamily: "Helvetica-Bold" },
-  entrySub: { fontSize: 9.5, color: ACCENT, fontFamily: "Helvetica-Bold", marginTop: 1 },
-  entryMeta: { fontSize: 8.5, color: MUTED, marginTop: 1 },
-  entryPeriod: { fontSize: 8.5, color: MUTED },
-  bullet: { fontSize: 9, color: MUTED, marginTop: 4, flexDirection: "row" },
-  bulletDot: { color: ACCENT, marginRight: 5 },
-  techRow: { flexDirection: "row", flexWrap: "wrap", gap: 4, marginTop: 7 },
-  techTag: { fontSize: 7.5, color: MUTED, backgroundColor: "#F4F4F5", paddingVertical: 2, paddingHorizontal: 6, borderRadius: 3 },
+  entryTitle: { fontSize: 10, fontFamily: "Helvetica-Bold" },
+  entrySub: { fontSize: 9, fontFamily: "Helvetica-Bold", color: INK, marginTop: 1 },
+  entryMeta: { fontSize: 7.5, color: FAINT, marginTop: 1 },
+  entryPeriod: { fontSize: 7.5, color: MUTED },
+  bullet: { fontSize: 8.5, color: MUTED, marginTop: 3, flexDirection: "row" },
+  bulletDot: { color: INK, marginRight: 5 },
+  techRow: { flexDirection: "row", flexWrap: "wrap", gap: 4, marginTop: 6 },
+  techTag: { fontSize: 6.5, color: MUTED, backgroundColor: CARD, paddingVertical: 2, paddingHorizontal: 6, borderRadius: 3 },
 
-  // Skills with proficiency bars (mirrors the site's own visualization)
-  skillsGrid: { flexDirection: "row", flexWrap: "wrap", gap: 18 },
-  skillCategory: { width: "30%", marginBottom: 12 },
-  skillCategoryTitle: { fontSize: 8.5, fontFamily: "Helvetica-Bold", marginBottom: 7, color: INK },
+  // Skills
+  skillsGrid: { flexDirection: "row", flexWrap: "wrap", gap: 16 },
+  skillCategory: { width: "22%", marginBottom: 12 },
+  skillCategoryTitle: { fontSize: 8, fontFamily: "Helvetica-Bold", marginBottom: 6, color: INK },
   skillRow: { marginBottom: 6 },
   skillNameRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: 2 },
-  skillName: { fontSize: 8, color: INK },
-  skillLevel: { fontSize: 6.5, color: MUTED },
-  skillBarTrack: { height: 3, backgroundColor: "#F0F0F1", borderRadius: 2 },
-  skillBarFill: { height: 3, backgroundColor: ACCENT, borderRadius: 2 },
+  skillName: { fontSize: 7.5, color: INK },
+  skillLevel: { fontSize: 6, color: FAINT },
+  skillBarTrack: { height: 2.5, backgroundColor: BORDER },
+  skillBarFill: { height: 2.5, backgroundColor: INK },
 
   // Education
-  eduEntry: { marginBottom: 9, paddingBottom: 9, borderBottom: `1px solid ${BORDER}` },
+  eduEntry: { marginBottom: 8, paddingBottom: 8, borderBottom: `1px solid ${BORDER}` },
 
-  footer: { position: "absolute", bottom: 24, left: 44, right: 44, fontSize: 7, color: MUTED, textAlign: "center" },
-  pageNum: { position: "absolute", bottom: 24, right: 44, fontSize: 7, color: MUTED },
+  footer: { position: "absolute", bottom: 26, left: 48, right: 48, fontSize: 6.5, color: FAINT, textAlign: "center" },
+  pageNum: { position: "absolute", bottom: 26, right: 48, fontSize: 6.5, color: FAINT },
 })
 
 const LEVEL_WIDTH: Record<string, string> = { Expert: "100%", Proficient: "70%", Learning: "40%" }
@@ -90,7 +93,7 @@ type Project = {
 function SectionHeader({ title, sub }: { title: string; sub?: string }) {
   return (
     <View style={styles.sectionHeader}>
-      <View style={styles.sectionDot} />
+      <View style={styles.sectionMark} />
       <Text style={styles.sectionTitle}>{title.toUpperCase()}</Text>
       {sub && <Text style={styles.sectionSub}>{sub}</Text>}
     </View>
@@ -137,21 +140,55 @@ export function PortfolioDocument({
       return acc
     }, {})
   )
+  const bareUrl = (u: string) => u.replace("https://", "").replace("http://", "")
 
   return (
     <Document title={`${name} — Portfolio`} author={name}>
-      {/* Page 1 — Portfolio: intro + selected work */}
-      <Page size="A4" style={styles.page}>
+      {/* Cover */}
+      <Page size="A4" orientation="landscape" style={styles.cover}>
+        <View>
+          <Text style={styles.coverEyebrow}>PORTFOLIO</Text>
+          <Text style={styles.coverName}>{name}</Text>
+          <Text style={styles.coverTagline}>{tagline}</Text>
+        </View>
+        <View>
+          <View style={styles.coverRule} />
+          <View style={styles.coverContactRow}>
+            <View>
+              <Text style={styles.coverContactLabel}>EMAIL</Text>
+              <Text style={styles.coverContactValue}>{email}</Text>
+            </View>
+            <View>
+              <Text style={styles.coverContactLabel}>LOCATION</Text>
+              <Text style={styles.coverContactValue}>{location}</Text>
+            </View>
+            <View>
+              <Text style={styles.coverContactLabel}>LINKEDIN</Text>
+              <Text style={styles.coverContactValue}>{bareUrl(linkedin)}</Text>
+            </View>
+            <View>
+              <Text style={styles.coverContactLabel}>GITHUB</Text>
+              <Text style={styles.coverContactValue}>{bareUrl(github)}</Text>
+            </View>
+            <View>
+              <Text style={styles.coverContactLabel}>WEB</Text>
+              <Text style={styles.coverContactValue}>{bareUrl(siteUrl)}</Text>
+            </View>
+          </View>
+        </View>
+      </Page>
+
+      {/* Content */}
+      <Page size="A4" orientation="landscape" style={styles.page}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.tagline}>{tagline}</Text>
         <View style={styles.contactRow}>
           <Text style={styles.contactItem}>{email}</Text>
           <Text style={styles.contactItem}>{location}</Text>
-          <Link src={linkedin} style={styles.contactItem}>{linkedin.replace("https://", "")}</Link>
-          <Link src={github} style={styles.contactItem}>{github.replace("https://", "")}</Link>
-          <Link src={siteUrl} style={styles.contactItem}>{siteUrl.replace("https://", "").replace("http://", "")}</Link>
+          <Link src={linkedin} style={styles.contactItem}>{bareUrl(linkedin)}</Link>
+          <Link src={github} style={styles.contactItem}>{bareUrl(github)}</Link>
+          <Link src={siteUrl} style={styles.contactItem}>{bareUrl(siteUrl)}</Link>
         </View>
-        <View style={styles.headerRule} />
         <Text style={styles.summary}>{summary}</Text>
 
         {projects.length > 0 && (
@@ -180,7 +217,7 @@ export function PortfolioDocument({
                       ))}
                     </View>
                     {p.liveUrl && (
-                      <Link src={p.liveUrl} style={styles.projectLink}>{p.liveUrl.replace("https://", "").replace("http://", "")}</Link>
+                      <Link src={p.liveUrl} style={styles.projectLink}>{bareUrl(p.liveUrl)}</Link>
                     )}
                   </View>
                 )
@@ -213,7 +250,7 @@ export function PortfolioDocument({
           </View>
         )}
 
-        <View style={{ marginTop: 20 }}>
+        <View style={{ marginTop: 18 }}>
           <SectionHeader title="Experience" />
           {experiences.map((e) => (
             <View key={e.id} style={styles.entry} wrap={false}>
@@ -243,7 +280,7 @@ export function PortfolioDocument({
         </View>
 
         {education.length > 0 && (
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 8 }}>
             <SectionHeader title="Education" />
             {education.map((e) => (
               <View key={e.id} style={styles.eduEntry} wrap={false}>
@@ -267,7 +304,7 @@ export function PortfolioDocument({
         )}
 
         <Text style={styles.footer} fixed>
-          {name} — {siteUrl.replace("https://", "").replace("http://", "")}
+          {name} — {bareUrl(siteUrl)}
         </Text>
         <Text style={styles.pageNum} render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} fixed />
       </Page>
