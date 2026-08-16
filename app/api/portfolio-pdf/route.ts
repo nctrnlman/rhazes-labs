@@ -32,6 +32,7 @@ export async function GET() {
       description: p.description,
       techStack: p.techStack,
       liveUrl: p.liveUrl,
+      impactMetrics: p.impactMetrics as Record<string, string> | null,
     })),
   })
 
