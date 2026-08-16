@@ -42,13 +42,17 @@ export function HeroSection({ availability, resumeUrl }: Props) {
             <Button variant="pill-outline" size="lg" className="h-auto px-7 py-3.5" nativeButton={false} render={<Link href="/work-with-me" />}>
               Work With Me
             </Button>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
             {resumeUrl && (
-              <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-                <Download className="h-4 w-4" /> Resume
+              <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground">
+                <Download className="h-3.5 w-3.5" /> Resume
               </a>
             )}
-            <a href="/api/portfolio-pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-              <Download className="h-4 w-4" /> Download Portfolio
+            {resumeUrl && <span className="h-1 w-1 rounded-full bg-border" />}
+            <a href="/api/portfolio-pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground">
+              <Download className="h-3.5 w-3.5" /> Download Portfolio
             </a>
           </motion.div>
         </div>
