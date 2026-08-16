@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/shared/motion-wrapper"
 import Link from "next/link"
+import Image from "next/image"
 import { Clock, Eye, ArrowRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/lib/utils"
@@ -34,7 +35,14 @@ export default async function BlogPage() {
             {posts.map((post) => (
               <StaggerItem key={post.id}>
                 <Link href={`/blog/${post.slug}`} className="group block bg-card border border-border rounded-2xl overflow-hidden hover:border-accent/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/5">
-                  <div className="h-44 bg-muted" />
+                  <div className="relative h-44 bg-muted">
+                    <Image
+                      src={post.coverImage || `/blog-cover/${post.slug}`}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
                   <div className="p-6">
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {post.tags.slice(0, 3).map((t) => <Badge key={t} variant="secondary" className="text-xs">{t}</Badge>)}

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       title: post.title,
       description,
-      images: post.coverImage ? [post.coverImage] : undefined,
+      images: [post.coverImage || `/blog-cover/${post.slug}`],
       publishedTime: post.publishedAt?.toISOString(),
       tags: post.tags,
     },
@@ -54,7 +54,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     headline: post.title,
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.updatedAt.toISOString(),
-    image: post.coverImage ?? undefined,
+    image: post.coverImage || `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/blog-cover/${post.slug}`,
     author: { "@type": "Person", name: "Muhammad Rhazes Alhambra Andalusia Devino" },
   }
 
@@ -72,11 +72,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <ArrowLeft className="w-4 h-4" /> Back to Blog
         </Link>
 
-        {post.coverImage && (
-          <div className="aspect-video rounded-2xl overflow-hidden mb-8">
-            <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover" />
-          </div>
-        )}
+        <div className="aspect-video rounded-2xl overflow-hidden mb-8">
+          <img
+            src={post.coverImage || `/blog-cover/${post.slug}`}
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
         <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map((tag) => (
