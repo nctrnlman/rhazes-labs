@@ -13,7 +13,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const project = await prisma.project.findUnique({ where: { slug } })
   if (!project) return { title: "Not Found" }
-  return { title: `${project.title} — Rhazes Labs`, description: project.description }
+  return {
+    title: project.title,
+    description: project.description,
+    openGraph: {
+      type: "article",
+      title: project.title,
+      description: project.description,
+      images: project.imageUrl ? [project.imageUrl] : undefined,
+    },
+    twitter: { card: "summary_large_image", title: project.title, description: project.description },
+  }
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {

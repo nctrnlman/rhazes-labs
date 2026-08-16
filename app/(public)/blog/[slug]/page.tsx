@@ -15,7 +15,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const post = await prisma.blogPost.findUnique({ where: { slug } })
   if (!post) return { title: "Not Found" }
-  return { title: `${post.title} — Rhazes Labs`, description: post.content.slice(0, 160) }
+  const description = post.content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 160)
+  return {
+    title: post.title,
+    description,
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description,
+      images: post.coverImage ? [post.coverImage] : undefined,
+      publishedTime: post.publishedAt?.toISOString(),
+      tags: post.tags,
+    },
+    twitter: { card: "summary_large_image", title: post.title, description },
+  }
 }
 
 async function incrementView(slug: string) {
@@ -34,8 +47,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   await incrementView(slug)
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    datePublished: post.publishedAt?.toISOString(),
+    dateModified: post.updatedAt.toISOString(),
+    image: post.coverImage ?? undefined,
+    author: { "@type": "Person", name: "Muhammad Rhazes Alhambra Andalusia Devino" },
+  }
+
   return (
     <main className="pt-24 pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="container-custom max-w-3xl">
         <Link
           href="/blog"
