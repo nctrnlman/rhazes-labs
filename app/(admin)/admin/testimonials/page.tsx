@@ -1,5 +1,9 @@
+import Link from "next/link"
 import { prisma } from "@/lib/prisma"
-import { Star } from "lucide-react"
+import { Star, Plus } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { DeleteButton } from "@/components/admin/delete-button"
+import { deleteTestimonial } from "./actions"
 
 export default async function AdminTestimonialsPage() {
   const testimonials = await prisma.testimonial.findMany({ orderBy: [{ order: "asc" }, { createdAt: "desc" }] })
@@ -11,6 +15,9 @@ export default async function AdminTestimonialsPage() {
           <h1 className="text-2xl font-semibold">Testimonials</h1>
           <p className="text-muted-foreground">{testimonials.length} testimonials</p>
         </div>
+        <Button variant="pill" className="h-auto px-5 py-2.5 text-sm" nativeButton={false} render={<Link href="/admin/testimonials/new" />}>
+          <Plus className="h-4 w-4" /> Add Testimonial
+        </Button>
       </div>
 
       <div className="bg-card border border-border rounded-2xl overflow-hidden">
@@ -18,7 +25,6 @@ export default async function AdminTestimonialsPage() {
           <div className="p-12 text-center">
             <Star className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
             <p className="text-muted-foreground">No testimonials yet.</p>
-            <p className="text-sm text-muted-foreground mt-1">Add them directly via database seeding.</p>
           </div>
         ) : (
           <div className="divide-y divide-border">
@@ -39,6 +45,10 @@ export default async function AdminTestimonialsPage() {
                     </div>
                     <p className="text-sm text-muted-foreground mb-3">{t.role} @ {t.company}</p>
                     <p className="text-sm leading-relaxed">&ldquo;{t.message}&rdquo;</p>
+                  </div>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <Link href={`/admin/testimonials/${t.id}/edit`} className="text-xs text-accent hover:underline">Edit</Link>
+                    <DeleteButton action={deleteTestimonial} id={t.id} label="Delete testimonial" />
                   </div>
                 </div>
               </div>

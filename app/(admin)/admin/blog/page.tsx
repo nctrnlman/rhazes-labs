@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { Plus, Eye, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { DeleteButton } from "@/components/admin/delete-button"
+import { deletePost } from "./actions"
 
 export default async function AdminBlogPage() {
   const posts = await prisma.blogPost.findMany({ orderBy: { createdAt: "desc" } })
@@ -52,12 +54,11 @@ export default async function AdminBlogPage() {
                     ))}
                   </div>
                 </div>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="flex-shrink-0 text-xs text-accent hover:underline"
-                >
-                  View
-                </Link>
+                <div className="flex items-center gap-3 flex-shrink-0">
+                  <Link href={`/blog/${post.slug}`} className="text-xs text-accent hover:underline">View</Link>
+                  <Link href={`/admin/blog/${post.id}/edit`} className="text-xs text-accent hover:underline">Edit</Link>
+                  <DeleteButton action={deletePost} id={post.id} label="Delete post" />
+                </div>
               </div>
             ))}
           </div>

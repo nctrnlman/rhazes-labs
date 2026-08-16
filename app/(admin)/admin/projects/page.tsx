@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { Plus, ExternalLink, Code2, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { DeleteButton } from "@/components/admin/delete-button"
+import { deleteProject } from "./actions"
 
 export default async function AdminProjectsPage() {
   const projects = await prisma.project.findMany({ orderBy: [{ order: "asc" }, { createdAt: "desc" }] })
@@ -44,7 +46,7 @@ export default async function AdminProjectsPage() {
                     ))}
                   </div>
                 </div>
-                <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="flex items-center gap-3 flex-shrink-0">
                   {project.liveUrl && (
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-muted/50 transition-colors">
                       <ExternalLink className="w-4 h-4 text-muted-foreground" />
@@ -55,6 +57,8 @@ export default async function AdminProjectsPage() {
                       <Code2 className="w-4 h-4 text-muted-foreground" />
                     </a>
                   )}
+                  <Link href={`/admin/projects/${project.id}/edit`} className="text-xs text-accent hover:underline">Edit</Link>
+                  <DeleteButton action={deleteProject} id={project.id} label="Delete project" />
                 </div>
               </div>
             ))}
