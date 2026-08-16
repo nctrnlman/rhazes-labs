@@ -60,6 +60,8 @@ export function HeroSection({ availability, resumeUrl }: Props) {
             fill
             className="object-cover"
             priority
+            quality={100}
+            sizes="(min-width: 1024px) 40vw, 100vw"
           />
         </motion.div>
       </div>
