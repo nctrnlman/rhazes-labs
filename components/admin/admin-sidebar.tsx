@@ -25,7 +25,7 @@ export function AdminSidebar() {
     <aside className="w-64 min-h-screen border-r border-border bg-background/80 backdrop-blur-xl flex flex-col">
       <div className="p-6 border-b border-border">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-semibold text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-semibold text-accent-foreground">
             R
           </div>
           <div>

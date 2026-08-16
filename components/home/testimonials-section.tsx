@@ -33,7 +33,7 @@ export async function TestimonialsSection() {
                   {t.avatarUrl ? (
                     <img src={t.avatarUrl} alt={t.name} className="w-10 h-10 rounded-full object-cover" />
                   ) : (
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-white">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-accent-foreground">
                       {t.name[0]}
                     </div>
                   )}

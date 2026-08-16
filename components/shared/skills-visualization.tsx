@@ -2,11 +2,11 @@
 import { StaggerContainer, StaggerItem } from "@/components/shared/motion-wrapper"
 
 const cats = [
-  { name: "Frontend", color: "bg-blue-500", skills: [{ n: "Next.js", l: "Expert" }, { n: "React.js", l: "Expert" }, { n: "TypeScript", l: "Expert" }, { n: "Tailwind CSS", l: "Expert" }, { n: "AngularJS", l: "Proficient" }] },
-  { name: "Backend", color: "bg-green-500", skills: [{ n: "NestJS", l: "Expert" }, { n: "Node.js", l: "Expert" }, { n: "Spring Boot", l: "Proficient" }, { n: "Laravel", l: "Proficient" }, { n: "FastAPI", l: "Proficient" }] },
-  { name: "Database", color: "bg-purple-500", skills: [{ n: "PostgreSQL", l: "Expert" }, { n: "MySQL", l: "Expert" }, { n: "MongoDB", l: "Proficient" }, { n: "OracleDB", l: "Proficient" }, { n: "Firebase", l: "Proficient" }] },
-  { name: "DevOps", color: "bg-orange-500", skills: [{ n: "Docker", l: "Expert" }, { n: "Kubernetes", l: "Proficient" }, { n: "AWS", l: "Proficient" }, { n: "CI/CD", l: "Expert" }, { n: "Kafka", l: "Proficient" }] },
-  { name: "AI / ML", color: "bg-pink-500", skills: [{ n: "LLMs / RAG", l: "Learning" }, { n: "HuggingFace", l: "Learning" }, { n: "LangChain", l: "Learning" }, { n: "NLP", l: "Learning" }, { n: "PyTorch", l: "Learning" }] },
+  { name: "Frontend", skills: [{ n: "Next.js", l: "Expert" }, { n: "React.js", l: "Expert" }, { n: "TypeScript", l: "Expert" }, { n: "Tailwind CSS", l: "Expert" }, { n: "AngularJS", l: "Proficient" }] },
+  { name: "Backend", skills: [{ n: "NestJS", l: "Expert" }, { n: "Node.js", l: "Expert" }, { n: "Spring Boot", l: "Proficient" }, { n: "Laravel", l: "Proficient" }, { n: "FastAPI", l: "Proficient" }] },
+  { name: "Database", skills: [{ n: "PostgreSQL", l: "Expert" }, { n: "MySQL", l: "Expert" }, { n: "MongoDB", l: "Proficient" }, { n: "OracleDB", l: "Proficient" }, { n: "Firebase", l: "Proficient" }] },
+  { name: "DevOps", skills: [{ n: "Docker", l: "Expert" }, { n: "Kubernetes", l: "Proficient" }, { n: "AWS", l: "Proficient" }, { n: "CI/CD", l: "Expert" }, { n: "Kafka", l: "Proficient" }] },
+  { name: "AI / ML", skills: [{ n: "LLMs / RAG", l: "Learning" }, { n: "HuggingFace", l: "Learning" }, { n: "LangChain", l: "Learning" }, { n: "NLP", l: "Learning" }, { n: "PyTorch", l: "Learning" }] },
 ]
 
 const w: Record<string, string> = { Expert: "100%", Proficient: "70%", Learning: "40%" }
@@ -18,7 +18,7 @@ export function SkillsVisualization() {
       {cats.map((cat) => (
         <div key={cat.name} className="bg-card border border-border rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-5">
-            <span className={`h-2.5 w-2.5 rounded-full ${cat.color}`} />
+            <span className="h-2.5 w-2.5 rounded-full bg-foreground/60" />
             <h3 className="font-semibold text-sm">{cat.name}</h3>
           </div>
           <StaggerContainer className="space-y-3">

@@ -30,7 +30,7 @@ export default async function BlogPage() {
             {posts.map((post) => (
               <StaggerItem key={post.id}>
                 <Link href={`/blog/${post.slug}`} className="group block bg-card border border-border rounded-2xl overflow-hidden hover:border-accent/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/5">
-                  <div className="h-44 bg-gradient-to-br from-accent/10 to-cyan-500/5" />
+                  <div className="h-44 bg-muted" />
                   <div className="p-6">
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {post.tags.slice(0, 3).map((t) => <Badge key={t} variant="secondary" className="text-xs">{t}</Badge>)}

@@ -13,7 +13,7 @@ export default async function AdminProjectsPage() {
           <h1 className="text-2xl font-semibold">Projects</h1>
           <p className="text-muted-foreground">{projects.length} projects</p>
         </div>
-        <Button variant="pill" className="h-auto px-5 py-2.5 text-sm" render={<Link href="/admin/projects/new" />}>
+        <Button variant="pill" className="h-auto px-5 py-2.5 text-sm" nativeButton={false} render={<Link href="/admin/projects/new" />}>
           <Plus className="h-4 w-4" /> Add Project
         </Button>
       </div>

@@ -52,7 +52,7 @@ export default function WorkWithMePage() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button variant="pill" size="lg" className="h-auto px-8 py-4" render={<Link href="/contact" />}>
+            <Button variant="pill" size="lg" className="h-auto px-8 py-4" nativeButton={false} render={<Link href="/contact" />}>
               Start a conversation <ArrowRight className="h-4 w-4" />
             </Button>
           </div>

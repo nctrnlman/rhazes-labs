@@ -25,7 +25,7 @@ export default function NotFound() {
           The page you&apos;re looking for doesn&apos;t exist or has been moved. Let&apos;s get you back on track.
         </p>
         <div className="flex items-center justify-center gap-3">
-          <Button variant="pill" className="h-auto px-6 py-3" render={<Link href="/" />}>
+          <Button variant="pill" className="h-auto px-6 py-3" nativeButton={false} render={<Link href="/" />}>
             <Home className="w-4 h-4" /> Go Home
           </Button>
           <button

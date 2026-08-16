@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         <div className="flex gap-3 mb-12">
           {project.liveUrl && (
-            <Button variant="pill" className="h-auto px-6 py-3" render={<a href={project.liveUrl} target="_blank" rel="noopener noreferrer" />}>
+            <Button variant="pill" className="h-auto px-6 py-3" nativeButton={false} render={<a href={project.liveUrl} target="_blank" rel="noopener noreferrer" />}>
               <ExternalLink className="h-4 w-4" /> Live Demo
             </Button>
           )}

@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         <div className="mt-16 pt-8 border-t border-border">
           <div className="bg-card border border-border rounded-2xl p-6 flex items-center gap-4">
-            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-white">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-accent font-semibold text-accent-foreground">
               R
             </div>
             <div>

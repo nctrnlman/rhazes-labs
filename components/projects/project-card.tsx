@@ -19,7 +19,7 @@ export function ProjectCard({ title, slug, description, techStack, imageUrl, liv
             <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
           </div>
         ) : (
-          <div className="h-48 bg-gradient-to-br from-accent/10 to-cyan-500/5 flex items-center justify-center">
+          <div className="flex h-48 items-center justify-center bg-muted">
             <span className="text-5xl font-bold text-accent/20">{title[0]}</span>
           </div>
         )}
