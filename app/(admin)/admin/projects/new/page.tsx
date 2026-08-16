@@ -31,10 +31,14 @@ export default function NewProjectPage() {
           <label className="block text-sm font-medium mb-2">Case study content</label>
           <TiptapEditor name="content" />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium mb-2">Category</label>
             <input name="category" defaultValue="Web" className="w-full rounded-xl border border-border bg-background/50 px-4 py-2.5 text-sm" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Period</label>
+            <input name="period" placeholder="Jan 2025 – Present" className="w-full rounded-xl border border-border bg-background/50 px-4 py-2.5 text-sm" />
           </div>
           <div>
             <label className="block text-sm font-medium mb-2">Order</label>

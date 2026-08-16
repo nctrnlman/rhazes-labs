@@ -64,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { description, github, linkedin } = await getSiteSettings()
+  const { description, github, linkedin, instagram } = await getSiteSettings()
 
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -77,7 +77,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     email: "mailto:rhazesd@gmail.com",
     address: { "@type": "PostalAddress", addressLocality: "Jakarta", addressCountry: "ID" },
     worksFor: { "@type": "Organization", name: "Codenito ID", url: "https://codenito.id" },
-    sameAs: [github, linkedin],
+    sameAs: [github, linkedin, instagram],
   }
 
   return (

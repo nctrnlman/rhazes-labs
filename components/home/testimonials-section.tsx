@@ -39,7 +39,7 @@ export async function TestimonialsSection() {
                   )}
                   <div>
                     <p className="font-semibold text-sm">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.role} · {t.company}</p>
+                    <p className="text-xs text-muted-foreground">{t.company ? `${t.role} · ${t.company}` : t.role}</p>
                   </div>
                 </div>
               </div>

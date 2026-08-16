@@ -21,8 +21,14 @@ export async function ExperienceTimeline() {
                     <p className="text-sm font-semibold text-foreground">{e.company}</p>
                     <p className="text-xs text-muted-foreground mt-0.5">{e.type}</p>
                   </div>
-                  <span className="text-xs text-muted-foreground bg-muted rounded-full px-3 py-1.5 flex-shrink-0 whitespace-nowrap">{e.period}</span>
+                  <div className="flex flex-shrink-0 flex-wrap items-center justify-end gap-2">
+                    {e.period.toLowerCase().includes("present") && (
+                      <span className="rounded-full bg-foreground px-3 py-1.5 text-xs font-medium text-background whitespace-nowrap">Current</span>
+                    )}
+                    <span className="text-xs text-muted-foreground bg-muted rounded-full px-3 py-1.5 whitespace-nowrap">{e.period}</span>
+                  </div>
                 </div>
+                {e.description && <p className="text-sm text-muted-foreground leading-relaxed mb-5">{e.description}</p>}
                 <ul className="space-y-2 mb-5">
                   {e.highlights.map((h) => <li key={h} className="text-sm text-muted-foreground flex gap-2"><span className="text-foreground mt-0.5 flex-shrink-0">›</span>{h}</li>)}
                 </ul>

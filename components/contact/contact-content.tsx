@@ -1,44 +1,54 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Mail, Send, MapPin, Clock, MessageCircle } from "lucide-react"
-import { toast } from "sonner"
-import { FadeIn } from "@/components/shared/motion-wrapper"
-import { SectionHeading } from "@/components/shared/section-heading"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Mail, Send, MapPin, Clock, MessageCircle } from "lucide-react";
+import { toast } from "sonner";
+import { FadeIn } from "@/components/shared/motion-wrapper";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { Button } from "@/components/ui/button";
 
 const contactTypes = [
-  { value: "recruiter", label: "Recruiter" },
-  { value: "client", label: "Potential Client" },
-  { value: "collab", label: "Collaboration" },
+  { value: "hire", label: "Hiring Me (Full-time / Freelance)" },
+  { value: "codenito", label: "Codenito ID — Business Solution" },
+  { value: "collab", label: "Collaboration / Opportunity" },
   { value: "other", label: "Other" },
-]
+];
 
 export function ContactContent() {
-  const [form, setForm] = useState({ name: "", email: "", type: "", message: "" })
-  const [loading, setLoading] = useState(false)
-  const [sent, setSent] = useState(false)
+  const searchParams = useSearchParams();
+  const initialType = contactTypes.some((t) => t.value === searchParams.get("type"))
+    ? searchParams.get("type")!
+    : "";
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    type: initialType,
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
+    e.preventDefault();
     if (!form.name || !form.email || !form.type || !form.message) {
-      toast.error("Please fill in all fields")
-      return
+      toast.error("Please fill in all fields");
+      return;
     }
-    setLoading(true)
+    setLoading(true);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
-      })
-      if (!res.ok) throw new Error()
-      setSent(true)
-      toast.success("Message sent! I'll get back to you soon.")
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+      toast.success("Message sent! I'll get back to you soon.");
     } catch {
-      toast.error("Failed to send. Please try again.")
+      toast.error("Failed to send. Please try again.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
@@ -64,7 +74,10 @@ export function ContactContent() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <a href="mailto:rhazesd@gmail.com" className="font-medium transition-colors hover:text-accent">
+                  <a
+                    href="mailto:rhazesd@gmail.com"
+                    className="font-medium transition-colors hover:text-accent"
+                  >
                     rhazesd@gmail.com
                   </a>
                 </div>
@@ -78,7 +91,12 @@ export function ContactContent() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">WhatsApp</p>
-                  <a href="https://wa.me/6281221431716" target="_blank" rel="noopener noreferrer" className="font-medium transition-colors hover:text-accent">
+                  <a
+                    href="https://wa.me/6281221431716"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium transition-colors hover:text-accent"
+                  >
                     +62 812-2143-1716
                   </a>
                 </div>
@@ -118,34 +136,48 @@ export function ContactContent() {
                 </div>
                 <h2 className="mb-3 text-2xl font-semibold">Message Sent!</h2>
                 <p className="text-muted-foreground">
-                  Thanks for reaching out. I&apos;ll review your message and get back to you within 24 hours.
+                  Thanks for reaching out. I&apos;ll review your message and get
+                  back to you within 24 hours.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-8 space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-card border border-border rounded-2xl p-8 space-y-6"
+              >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="name"
                       type="text"
                       value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, name: e.target.value })
+                      }
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors"
-                      placeholder="Muhammad Rhazes"
+                      placeholder="Rhazes"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Email <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="email"
                       type="email"
                       value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, email: e.target.value })
+                      }
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors"
                       placeholder="you@example.com"
                     />
@@ -153,8 +185,12 @@ export function ContactContent() {
                 </div>
 
                 <div>
-                  <label htmlFor="type" className="block text-sm font-medium mb-2">
-                    I&apos;m reaching out as <span className="text-red-500">*</span>
+                  <label
+                    htmlFor="type"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    I&apos;m reaching out as{" "}
+                    <span className="text-red-500">*</span>
                   </label>
                   <select
                     id="type"
@@ -164,26 +200,39 @@ export function ContactContent() {
                   >
                     <option value="">Select type...</option>
                     {contactTypes.map((t) => (
-                      <option key={t.value} value={t.value}>{t.label}</option>
+                      <option key={t.value} value={t.value}>
+                        {t.label}
+                      </option>
                     ))}
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="message"
                     value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, message: e.target.value })
+                    }
                     rows={6}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:outline-none focus:ring-2 focus:border-accent focus:ring-accent/50 transition-colors resize-none"
                     placeholder="Tell me about your project, timeline, and budget..."
                   />
                 </div>
 
-                <Button type="submit" disabled={loading} variant="pill" size="lg" className="h-auto w-full justify-center px-6 py-4">
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  variant="pill"
+                  size="lg"
+                  className="h-auto w-full justify-center px-6 py-4"
+                >
                   {loading ? (
                     <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                   ) : (
@@ -199,5 +248,5 @@ export function ContactContent() {
         </div>
       </div>
     </main>
-  )
+  );
 }

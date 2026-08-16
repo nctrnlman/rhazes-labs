@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
-import { Calendar, Clock, Eye, Tag, ArrowLeft } from "lucide-react"
+import { Calendar, Clock, Eye, Tag, ArrowLeft, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+import { formatDate } from "@/lib/utils"
 
 export async function generateStaticParams() {
   const posts = await prisma.blogPost.findMany({
@@ -47,6 +49,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound()
 
   await incrementView(slug)
+
+  const related = await prisma.blogPost.findMany({
+    where: { status: "published", slug: { not: slug }, tags: { hasSome: post.tags } },
+    orderBy: { publishedAt: "desc" },
+    take: 3,
+  })
+  if (related.length < 3) {
+    const fallback = await prisma.blogPost.findMany({
+      where: { status: "published", slug: { notIn: [slug, ...related.map((r) => r.slug)] } },
+      orderBy: { publishedAt: "desc" },
+      take: 3 - related.length,
+    })
+    related.push(...fallback)
+  }
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -118,12 +134,38 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               R
             </div>
             <div>
-              <p className="font-semibold">Muhammad Rhazes</p>
+              <Link href="/about" className="font-semibold hover:text-accent transition-colors">Muhammad Rhazes</Link>
               <p className="text-sm text-muted-foreground">Full Stack Engineer & Founder @ Codenito.id</p>
             </div>
           </div>
         </div>
       </div>
+
+      {related.length > 0 && (
+        <div className="container-custom max-w-5xl mt-16 pt-8 border-t border-border">
+          <h2 className="mb-8 text-2xl font-semibold">Keep reading</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {related.map((r) => (
+              <Link
+                key={r.id}
+                href={`/blog/${r.slug}`}
+                className="group block bg-card border border-border rounded-2xl overflow-hidden hover:border-accent/30 transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="relative h-32 bg-muted">
+                  <Image src={r.coverImage || `/blog-cover/${r.slug}`} alt={r.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-semibold text-sm mb-2 group-hover:text-accent transition-colors line-clamp-2">{r.title}</h3>
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    {r.publishedAt && <span>{formatDate(r.publishedAt)}</span>}
+                    <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </main>
   )
 }

@@ -30,7 +30,7 @@ export default async function ProjectsPage() {
             {projects.map((p) => (
               <StaggerItem key={p.id}>
                 <ProjectCard title={p.title} slug={p.slug} description={p.description} techStack={p.techStack}
-                  imageUrl={p.imageUrl} liveUrl={p.liveUrl} githubUrl={p.githubUrl}
+                  imageUrl={p.imageUrl} liveUrl={p.liveUrl} githubUrl={p.githubUrl} period={p.period}
                   impactMetrics={p.impactMetrics as Record<string, string> | null} />
               </StaggerItem>
             ))}

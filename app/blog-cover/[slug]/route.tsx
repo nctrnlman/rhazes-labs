@@ -7,7 +7,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
   const { slug } = await params
   const post = await prisma.blogPost.findUnique({ where: { slug } })
   const title = post?.title ?? "Rhazes Labs"
-  const tags = post?.tags.slice(0, 3) ?? []
+  const category = post?.tags[0] ?? "Writing"
+  const tags = post?.tags.slice(1, 4) ?? []
 
   return new ImageResponse(
     (
@@ -24,13 +25,13 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", fontSize: 28, color: "#3B82F6", fontWeight: 600 }}>
-          Rhazes Devino — Writing
+        <div style={{ display: "flex", fontSize: 28, color: "#A1A1AA", fontWeight: 600 }}>
+          {category}
         </div>
         <div
           style={{
             display: "flex",
-            fontSize: title.length > 60 ? 52 : 64,
+            fontSize: title.length > 40 ? 56 : 68,
             fontWeight: 600,
             lineHeight: 1.15,
             letterSpacing: "-0.02em",

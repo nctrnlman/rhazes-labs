@@ -1,3 +1,7 @@
+# Rhazes Labs
+
+Before doing any work in this repo, read **[docs/context/README.md](./docs/context/README.md)** — it covers the product, the design system, content rules, and architecture patterns specific to this codebase.
+
 <!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 

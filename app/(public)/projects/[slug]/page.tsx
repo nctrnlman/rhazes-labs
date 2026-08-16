@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
-import { ArrowLeft, ExternalLink, Code2, Tag, TrendingUp } from "lucide-react"
+import { ArrowLeft, ExternalLink, Code2, Tag, TrendingUp, Lock } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       title: project.title,
       description: project.description,
-      images: project.imageUrl ? [project.imageUrl] : undefined,
+      images: [project.imageUrl || `/project-cover/${project.slug}`],
     },
     twitter: { card: "summary_large_image", title: project.title, description: project.description },
   }
@@ -44,22 +44,21 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <ArrowLeft className="w-4 h-4" /> Back to Projects
         </Link>
 
-        {project.imageUrl && (
-          <div className="aspect-video rounded-2xl overflow-hidden mb-8">
-            <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
-          </div>
-        )}
+        <div className="aspect-video rounded-2xl overflow-hidden mb-8">
+          <img src={project.imageUrl || `/project-cover/${project.slug}`} alt={project.title} className="w-full h-full object-cover" />
+        </div>
 
         <div className="flex flex-wrap items-center gap-3 mb-4">
           <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium capitalize text-foreground">
             {project.category}
           </span>
+          {project.period && <span className="text-sm text-muted-foreground">{project.period}</span>}
         </div>
 
         <h1 className="mb-4 text-3xl font-semibold leading-tight md:text-5xl">{project.title}</h1>
         <p className="text-xl text-muted-foreground mb-8">{project.description}</p>
 
-        <div className="flex gap-3 mb-12">
+        <div className="flex items-center gap-3 mb-12">
           {project.liveUrl && (
             <Button variant="pill" className="h-auto px-6 py-3" nativeButton={false} render={<a href={project.liveUrl} target="_blank" rel="noopener noreferrer" />}>
               <ExternalLink className="h-4 w-4" /> Live Demo
@@ -74,6 +73,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             >
               <Code2 className="w-4 h-4" /> View Code
             </a>
+          )}
+          {!project.liveUrl && !project.githubUrl && (
+            <span className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Lock className="h-4 w-4" /> Private project, built for internal or client use
+            </span>
           )}
         </div>
 

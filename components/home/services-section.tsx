@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/shared/section-heading"
 const services = [
   { icon: Code2, title: "Full Stack Engineer", desc: "End-to-end development from database architecture to polished UI. React, Next.js, NestJS, PostgreSQL, and more." },
   { icon: Layers, title: "Solution Architect", desc: "Designing scalable, maintainable systems. Cloud infra, microservices, CI/CD pipelines, 99.9% uptime SLA." },
-  { icon: MessageSquare, title: "Technical Consultant", desc: "Via Codenito ID — guiding businesses from concept to production with 15+ successful deliveries and >90% satisfaction." },
+  { icon: MessageSquare, title: "Technical Consultant", desc: "Guiding businesses from concept to production through Codenito ID, with 15+ successful deliveries and >90% satisfaction." },
 ]
 
 export function ServicesSection() {

@@ -3,10 +3,11 @@ import { prisma } from "@/lib/prisma"
 import { PortfolioDocument } from "@/lib/pdf/portfolio-document"
 
 export async function GET() {
-  const [settings, experiences, education, skills, projects] = await Promise.all([
+  const [settings, experiences, education, certifications, skills, projects] = await Promise.all([
     prisma.setting.findMany(),
     prisma.experience.findMany({ orderBy: { order: "asc" } }),
     prisma.education.findMany({ orderBy: { order: "asc" } }),
+    prisma.certification.findMany({ orderBy: { order: "asc" } }),
     prisma.skill.findMany({ orderBy: { order: "asc" } }),
     prisma.project.findMany({ where: { featured: true }, orderBy: { order: "asc" }, take: 4 }),
   ])
@@ -25,6 +26,7 @@ export async function GET() {
     siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
     experiences,
     education,
+    certifications,
     skills,
     projects: projects.map((p) => ({
       id: p.id,

@@ -20,7 +20,7 @@ export default async function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", fontSize: 28, color: "#3B82F6", fontWeight: 600, marginBottom: 24 }}>
+        <div style={{ display: "flex", fontSize: 28, color: "#A1A1AA", fontWeight: 600, marginBottom: 24 }}>
           Rhazes Devino
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 64, fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
@@ -28,7 +28,7 @@ export default async function OpengraphImage() {
           <div style={{ display: "flex" }}>&amp; Founder @ Codenito</div>
         </div>
         <div style={{ display: "flex", fontSize: 28, color: "#A1A1AA", marginTop: 32 }}>
-          Building production-grade systems. Jakarta — working globally.
+          Building production-grade systems. Jakarta, working globally.
         </div>
       </div>
     ),

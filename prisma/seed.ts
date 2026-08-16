@@ -38,7 +38,7 @@ async function main() {
     { key: "stats_years", value: "3+" },
     { key: "stats_uptime", value: "99.99%" },
     { key: "response_time", value: "< 24 hours" },
-    { key: "resume_url", value: "" },
+    { key: "resume_url", value: "/resume/Rhazes-Devino-Resume.pdf" },
   ]
 
   for (const s of settings) {
@@ -94,79 +94,67 @@ async function main() {
 
   console.log("✓ Projects seeded")
 
-  // Blog posts
-  await prisma.blogPost.upsert({
-    where: { slug: "building-scalable-nextjs-apps" },
-    update: {},
-    create: {
-      title: "Building Scalable Next.js Apps with Prisma and Supabase",
-      slug: "building-scalable-nextjs-apps",
-      content: "<p>Next.js 15 with App Router has fundamentally changed how we build full-stack applications. In this post, I'll walk through my production setup combining Next.js, Prisma ORM, and Supabase PostgreSQL.</p><h2>The Stack</h2><p>This combination gives you type-safe database queries, real-time capabilities, and edge-ready deployment — all without managing infrastructure.</p>",
-      tags: ["Next.js", "Prisma", "Supabase", "TypeScript"],
-      status: "published",
-      publishedAt: new Date(),
-      readingTime: 8,
-    },
-  })
-
-  await prisma.blogPost.upsert({
-    where: { slug: "my-ai-ml-learning-journey" },
-    update: {},
-    create: {
-      title: "My AI/ML Learning Journey as a Full Stack Engineer",
-      slug: "my-ai-ml-learning-journey",
-      content: "<p>After 3 years of building production web apps, I decided to seriously invest in AI and ML. Here's how I'm approaching it as a software engineer with no formal ML background.</p><h2>Where I Started</h2><p>I began with fast.ai's Practical Deep Learning course — it's hands-on and immediately applicable.</p>",
-      tags: ["AI", "Machine Learning", "Learning", "Career"],
-      status: "published",
-      publishedAt: new Date(),
-      readingTime: 6,
-    },
-  })
-
   console.log("✓ Blog posts seeded")
 
-  // Testimonials
-  await prisma.testimonial.upsert({
-    where: { id: "t1" },
-    update: {},
-    create: {
+  // Testimonials (real LinkedIn recommendations)
+  const testimonials = [
+    {
       id: "t1",
-      name: "Ahmad Fauzi",
-      role: "CTO",
-      company: "Startup Jakarta",
-      message: "Rhazes delivered our MVP in 3 weeks, on budget and beyond expectations. His full-stack expertise and attention to detail made the difference.",
-      featured: true,
+      name: "Azzahra H Gunawan",
+      role: "IT Governance, Risk & Compliance",
+      company: "Crowe Indonesia",
+      message: "Rhazes is not only an excellent full stack engineer but also an exceptional teammate. What stands out the most is his ability to take ideas from our discussions and turn them into real, working solutions — whether we're dealing with front-end complexities or back-end architecture.",
       order: 1,
     },
-  })
-
-  await prisma.testimonial.upsert({
-    where: { id: "t2" },
-    update: {},
-    create: {
+    {
       id: "t2",
-      name: "Siti Rahayu",
-      role: "Product Manager",
-      company: "TechCo Indonesia",
-      message: "Working with Rhazes was seamless. He understood our requirements immediately and translated them into clean, maintainable code.",
-      featured: true,
+      name: "Riki Eprilion Saputra",
+      role: "Back End Developer",
+      company: "Jobseeker Company",
+      message: "Rhazes consistently demonstrated exceptional technical expertise, a strong work ethic, and a collaborative spirit. They are always willing to lend a helping hand and share their knowledge with others, fostering a positive and productive work environment.",
       order: 2,
     },
-  })
-
-  await prisma.testimonial.upsert({
-    where: { id: "t3" },
-    update: {},
-    create: {
+    {
       id: "t3",
-      name: "Budi Santoso",
-      role: "Founder",
-      company: "Digital Agency",
-      message: "Rhazes's technical consulting helped us avoid costly architecture mistakes early. His recommendations saved us months of refactoring.",
-      featured: true,
+      name: "Ilham",
+      role: "Software QA Engineer",
+      company: "",
+      message: "Rhazes consistently delivered high-quality code and solutions, demonstrating a deep understanding of both front-end and back-end technologies. Their commitment to quality is commendable — Rhazes actively participated in our QA processes, ensuring every feature met rigorous standards.",
       order: 3,
     },
-  })
+    {
+      id: "t4",
+      name: "Yudi Maryadi",
+      role: "Fullstack Developer",
+      company: "",
+      message: "Rhazes consistently demonstrates a strong aptitude for understanding intricate issues and devising innovative tools to address them, ensuring more efficient workflows and enhanced productivity. His talent for creating applications that streamline and simplify tasks makes him a valuable asset.",
+      order: 4,
+    },
+    {
+      id: "t5",
+      name: "Khaled Makkawirelang",
+      role: "System Officer",
+      company: "",
+      message: "Rhazes possesses a deep understanding of web development, programming languages, and the necessary frameworks to create interactive and effective websites. His expertise, work ethic, dedication, and enthusiasm for continuous learning make him someone truly deserving of this recommendation.",
+      order: 5,
+    },
+    {
+      id: "t6",
+      name: "Ariiq Yusuf Dhiya Ulhaq",
+      role: "Fullstack Engineer",
+      company: "",
+      message: "Rhazes memiliki pemahaman yang mendalam tentang pengembangan web, bahasa pemrograman, dan framework yang diperlukan untuk membuat web yang interaktif dan efektif. Dia memiliki kemampuan komunikasi yang baik, mendengarkan dengan seksama, dan selalu bersedia memberikan masukan konstruktif.",
+      order: 6,
+    },
+  ]
+
+  for (const t of testimonials) {
+    await prisma.testimonial.upsert({
+      where: { id: t.id },
+      update: { ...t, featured: true },
+      create: { ...t, featured: true },
+    })
+  }
 
   console.log("✓ Testimonials seeded")
   console.log("\n✅ Database seeded successfully!")

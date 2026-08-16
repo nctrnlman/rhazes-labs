@@ -37,6 +37,7 @@
   --accent-foreground: oklch(0.98 0 0);
   --border: oklch(0.2 0.01 240);
   --ring: oklch(0.985 0 0);
+  --destructive: oklch(0.62 0.22 25);
 }
 
 @theme inline {
@@ -81,13 +82,6 @@ html { scroll-behavior: smooth; }
   background: oklch(from var(--background) l c h / 0.72);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, oklch(0.6 0.22 250), oklch(0.65 0.18 200));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .gradient-text {

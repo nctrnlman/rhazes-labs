@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import type { Metadata } from "next"
 import { ContactContent } from "@/components/contact/contact-content"
 
@@ -8,5 +9,9 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
-  return <ContactContent />
+  return (
+    <Suspense>
+      <ContactContent />
+    </Suspense>
+  )
 }

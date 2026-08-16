@@ -5,81 +5,89 @@ const PAPER = "#FFFFFF"
 const MUTED = "#52525B"
 const FAINT = "#A1A1AA"
 const BORDER = "#E4E4E4"
-const CARD = "#FAFAFA"
 
 const styles = StyleSheet.create({
-  page: { padding: 48, fontSize: 9.5, color: INK, fontFamily: "Helvetica", backgroundColor: PAPER },
+  page: { paddingTop: 54, paddingBottom: 54, paddingHorizontal: 56, fontSize: 9.5, color: INK, fontFamily: "Helvetica", backgroundColor: PAPER },
 
   // Cover page
-  cover: { padding: 56, backgroundColor: INK, color: PAPER, height: "100%", justifyContent: "space-between" },
-  coverEyebrow: { fontSize: 11, color: FAINT, letterSpacing: 2, marginBottom: 18 },
-  coverName: { fontSize: 46, fontFamily: "Helvetica-Bold", lineHeight: 1.05, letterSpacing: -1 },
-  coverTagline: { fontSize: 16, color: FAINT, marginTop: 16, maxWidth: 420 },
-  coverRule: { height: 1, backgroundColor: "#3F3F46", marginBottom: 20 },
-  coverContactRow: { flexDirection: "row", gap: 28 },
-  coverContactLabel: { fontSize: 7.5, color: "#71717A", letterSpacing: 1, marginBottom: 3 },
-  coverContactValue: { fontSize: 10, color: PAPER },
+  cover: { padding: 64, backgroundColor: INK, color: PAPER, height: "100%", justifyContent: "space-between" },
+  coverEyebrow: { fontSize: 10, color: FAINT, letterSpacing: 3, marginBottom: 22 },
+  coverName: { fontSize: 48, fontFamily: "Helvetica-Bold", lineHeight: 1.05 },
+  coverTagline: { fontSize: 15, color: FAINT, marginTop: 18, maxWidth: 440, lineHeight: 1.4 },
+  coverRule: { height: 0.75, backgroundColor: "#333333", marginBottom: 26 },
+  coverContactRow: { flexDirection: "row" },
+  coverContactCell: { paddingRight: 26, marginRight: 26, borderRight: "0.75px solid #2A2A2A" },
+  coverContactCellLast: { paddingRight: 0, marginRight: 0, borderRight: "none" },
+  coverContactLabel: { fontSize: 7, color: "#71717A", letterSpacing: 1.5, marginBottom: 4 },
+  coverContactValue: { fontSize: 9.5, color: PAPER },
 
   // Header (content pages)
-  name: { fontSize: 20, fontFamily: "Helvetica-Bold", letterSpacing: -0.5, marginBottom: 3 },
-  tagline: { fontSize: 11, color: MUTED, marginBottom: 10 },
-  contactRow: { flexDirection: "row", flexWrap: "wrap", columnGap: 14, rowGap: 3, marginBottom: 14 },
+  name: { fontSize: 19, fontFamily: "Helvetica-Bold", marginBottom: 3 },
+  tagline: { fontSize: 10.5, color: MUTED, marginBottom: 11 },
+  contactRow: { flexDirection: "row", flexWrap: "wrap", columnGap: 16, rowGap: 3, marginBottom: 16, paddingBottom: 16, borderBottom: `0.75px solid ${BORDER}` },
   contactItem: { fontSize: 8, color: MUTED },
-  summary: { fontSize: 9.5, color: MUTED, marginBottom: 20, lineHeight: 1.6, maxWidth: "70%" },
+  summary: { fontSize: 9.5, color: MUTED, marginBottom: 22, lineHeight: 1.65, maxWidth: "68%" },
 
-  // Section headings
-  sectionHeader: { flexDirection: "row", alignItems: "center", marginBottom: 12, marginTop: 4 },
-  sectionMark: { width: 14, height: 3, backgroundColor: INK, marginRight: 8 },
-  sectionTitle: { fontSize: 9.5, fontFamily: "Helvetica-Bold" },
-  sectionSub: { fontSize: 8, color: FAINT, marginLeft: "auto" },
+  // Section headings — restrained label + hairline rule, Apple spec-sheet style
+  sectionHeader: { flexDirection: "row", alignItems: "center", marginBottom: 14, marginTop: 6 },
+  sectionTitle: { fontSize: 8.5, fontFamily: "Helvetica-Bold", color: INK, marginRight: 10 },
+  sectionRule: { flex: 1, height: 0.75, backgroundColor: BORDER },
+  sectionSub: { fontSize: 7.5, color: FAINT, marginLeft: 10 },
 
-  // Project cards
-  projectGrid: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginBottom: 24 },
-  projectCard: { width: "31.5%", backgroundColor: CARD, border: `1px solid ${BORDER}`, borderRadius: 4, padding: 12 },
+  // Project cards — borderless, top hairline only
+  projectGrid: { flexDirection: "row", flexWrap: "wrap", columnGap: "3%", rowGap: 16, marginBottom: 26 },
+  projectCard: { width: "31.33%", borderTop: `1.25px solid ${INK}`, paddingTop: 10 },
   projectTitle: { fontSize: 10.5, fontFamily: "Helvetica-Bold", marginBottom: 4 },
-  projectDesc: { fontSize: 8, color: MUTED, lineHeight: 1.45, marginBottom: 8 },
-  metricsRow: { flexDirection: "row", flexWrap: "wrap", gap: 5, marginBottom: 8 },
-  metricChip: { border: `1px solid ${INK}`, borderRadius: 3, paddingVertical: 3, paddingHorizontal: 6 },
-  metricValue: { fontSize: 8.5, fontFamily: "Helvetica-Bold", color: INK },
-  metricLabel: { fontSize: 6, color: MUTED, letterSpacing: 0.3 },
-  projectTechRow: { flexDirection: "row", flexWrap: "wrap", gap: 4 },
+  projectDesc: { fontSize: 8, color: MUTED, lineHeight: 1.5, marginBottom: 9 },
+  metricsRow: { flexDirection: "row", flexWrap: "wrap", columnGap: 16, rowGap: 6, marginBottom: 9 },
+  metricValue: { fontSize: 13, fontFamily: "Helvetica-Bold", color: INK, marginBottom: 1 },
+  metricLabel: { fontSize: 6, color: MUTED },
+  projectTechRow: { flexDirection: "row", flexWrap: "wrap", gap: 4, marginBottom: 5 },
   projectTech: { fontSize: 6.5, color: FAINT },
-  projectLink: { fontSize: 7, color: INK, marginTop: 6, textDecoration: "underline" },
+  projectLink: { fontSize: 7, color: INK, textDecoration: "underline" },
 
-  // Experience
-  entry: { marginBottom: 11 },
+  // Experience / Education entries
+  entry: { paddingBottom: 11, marginBottom: 11, borderBottom: `0.75px solid ${BORDER}` },
+  entryLast: { borderBottom: "none", marginBottom: 0, paddingBottom: 0 },
   entryHeaderRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start" },
+  entryTitleRow: { flexDirection: "row", alignItems: "center", gap: 6 },
   entryTitle: { fontSize: 10, fontFamily: "Helvetica-Bold" },
+  currentPill: { fontSize: 6, color: PAPER, backgroundColor: INK, paddingVertical: 2, paddingHorizontal: 5, borderRadius: 3 },
   entrySub: { fontSize: 9, fontFamily: "Helvetica-Bold", color: INK, marginTop: 1 },
   entryMeta: { fontSize: 7.5, color: FAINT, marginTop: 1 },
   entryPeriod: { fontSize: 7.5, color: MUTED },
-  bullet: { fontSize: 8.5, color: MUTED, marginTop: 3, flexDirection: "row" },
-  bulletDot: { color: INK, marginRight: 5 },
-  techRow: { flexDirection: "row", flexWrap: "wrap", gap: 4, marginTop: 6 },
-  techTag: { fontSize: 6.5, color: MUTED, backgroundColor: CARD, paddingVertical: 2, paddingHorizontal: 6, borderRadius: 3 },
+  entryDescription: { fontSize: 8, color: MUTED, lineHeight: 1.55, marginTop: 6, maxWidth: "92%" },
+  bullet: { fontSize: 8.5, color: MUTED, marginTop: 4, flexDirection: "row" },
+  bulletDot: { color: INK, marginRight: 6 },
+  techRow: { flexDirection: "row", flexWrap: "wrap", gap: 4, marginTop: 7 },
+  techTag: { fontSize: 6.5, color: MUTED },
 
   // Skills
-  skillsGrid: { flexDirection: "row", flexWrap: "wrap", gap: 16 },
-  skillCategory: { width: "22%", marginBottom: 12 },
-  skillCategoryTitle: { fontSize: 8, fontFamily: "Helvetica-Bold", marginBottom: 6, color: INK },
-  skillRow: { marginBottom: 6 },
-  skillNameRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: 2 },
+  skillsGrid: { flexDirection: "row", flexWrap: "wrap", columnGap: "4%", rowGap: 14, marginBottom: 26 },
+  skillCategory: { width: "22%" },
+  skillCategoryTitle: { fontSize: 8, fontFamily: "Helvetica-Bold", marginBottom: 8, color: INK },
+  skillRow: { marginBottom: 7 },
+  skillNameRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: 3 },
   skillName: { fontSize: 7.5, color: INK },
   skillLevel: { fontSize: 6, color: FAINT },
-  skillBarTrack: { height: 2.5, backgroundColor: BORDER },
-  skillBarFill: { height: 2.5, backgroundColor: INK },
+  skillBarTrack: { height: 2, backgroundColor: BORDER },
+  skillBarFill: { height: 2, backgroundColor: INK },
 
-  // Education
-  eduEntry: { marginBottom: 8, paddingBottom: 8, borderBottom: `1px solid ${BORDER}` },
+  // Certifications — dense minimal grid
+  certGrid: { flexDirection: "row", flexWrap: "wrap", columnGap: "3%", rowGap: 12 },
+  certItem: { width: "31.33%" },
+  certName: { fontSize: 8, fontFamily: "Helvetica-Bold", lineHeight: 1.35, marginBottom: 3 },
+  certMeta: { fontSize: 7, color: MUTED },
 
-  footer: { position: "absolute", bottom: 26, left: 48, right: 48, fontSize: 6.5, color: FAINT, textAlign: "center" },
-  pageNum: { position: "absolute", bottom: 26, right: 48, fontSize: 6.5, color: FAINT },
+  footer: { position: "absolute", bottom: 28, left: 56, right: 56, fontSize: 6.5, color: FAINT, textAlign: "center" },
+  pageNum: { position: "absolute", bottom: 28, right: 56, fontSize: 6.5, color: FAINT },
 })
 
 const LEVEL_WIDTH: Record<string, string> = { Expert: "100%", Proficient: "70%", Learning: "40%" }
 
-type Experience = { id: string; role: string; company: string; period: string; type: string; highlights: string[]; techStack: string[] }
+type Experience = { id: string; role: string; company: string; period: string; type: string; description?: string | null; highlights: string[]; techStack: string[] }
 type Education = { id: string; school: string; degree: string; period: string; location: string; note: string | null }
+type Certification = { id: string; name: string; issuer: string; issueDate: string; expiry: string | null }
 type Skill = { id: string; category: string; name: string; level: string }
 type Project = {
   id: string
@@ -93,8 +101,8 @@ type Project = {
 function SectionHeader({ title, sub }: { title: string; sub?: string }) {
   return (
     <View style={styles.sectionHeader}>
-      <View style={styles.sectionMark} />
       <Text style={styles.sectionTitle}>{title.toUpperCase()}</Text>
+      <View style={styles.sectionRule} />
       {sub && <Text style={styles.sectionSub}>{sub}</Text>}
     </View>
   )
@@ -117,6 +125,7 @@ export function PortfolioDocument({
   siteUrl,
   experiences,
   education,
+  certifications,
   skills,
   projects,
 }: {
@@ -130,6 +139,7 @@ export function PortfolioDocument({
   siteUrl: string
   experiences: Experience[]
   education: Education[]
+  certifications: Certification[]
   skills: Skill[]
   projects: Project[]
 }) {
@@ -143,7 +153,7 @@ export function PortfolioDocument({
   const bareUrl = (u: string) => u.replace("https://", "").replace("http://", "")
 
   return (
-    <Document title={`${name} — Portfolio`} author={name}>
+    <Document title={`${name} - Portfolio`} author={name}>
       {/* Cover */}
       <Page size="A4" orientation="landscape" style={styles.cover}>
         <View>
@@ -154,23 +164,23 @@ export function PortfolioDocument({
         <View>
           <View style={styles.coverRule} />
           <View style={styles.coverContactRow}>
-            <View>
+            <View style={styles.coverContactCell}>
               <Text style={styles.coverContactLabel}>EMAIL</Text>
               <Text style={styles.coverContactValue}>{email}</Text>
             </View>
-            <View>
+            <View style={styles.coverContactCell}>
               <Text style={styles.coverContactLabel}>LOCATION</Text>
               <Text style={styles.coverContactValue}>{location}</Text>
             </View>
-            <View>
+            <View style={styles.coverContactCell}>
               <Text style={styles.coverContactLabel}>LINKEDIN</Text>
               <Text style={styles.coverContactValue}>{bareUrl(linkedin)}</Text>
             </View>
-            <View>
+            <View style={styles.coverContactCell}>
               <Text style={styles.coverContactLabel}>GITHUB</Text>
               <Text style={styles.coverContactValue}>{bareUrl(github)}</Text>
             </View>
-            <View>
+            <View style={[styles.coverContactCell, styles.coverContactCellLast]}>
               <Text style={styles.coverContactLabel}>WEB</Text>
               <Text style={styles.coverContactValue}>{bareUrl(siteUrl)}</Text>
             </View>
@@ -204,7 +214,7 @@ export function PortfolioDocument({
                     {metrics.length > 0 && (
                       <View style={styles.metricsRow}>
                         {metrics.map(([k, v]) => (
-                          <View key={k} style={styles.metricChip}>
+                          <View key={k}>
                             <Text style={styles.metricValue}>{v}</Text>
                             <Text style={styles.metricLabel}>{k.replace(/_/g, " ").toUpperCase()}</Text>
                           </View>
@@ -250,18 +260,22 @@ export function PortfolioDocument({
           </View>
         )}
 
-        <View style={{ marginTop: 18 }}>
+        <View>
           <SectionHeader title="Experience" />
-          {experiences.map((e) => (
-            <View key={e.id} style={styles.entry} wrap={false}>
+          {experiences.map((e, i) => (
+            <View key={e.id} style={[styles.entry, i === experiences.length - 1 ? styles.entryLast : undefined]}>
               <View style={styles.entryHeaderRow}>
                 <View>
-                  <Text style={styles.entryTitle}>{e.role}</Text>
+                  <View style={styles.entryTitleRow}>
+                    <Text style={styles.entryTitle}>{e.role}</Text>
+                    {e.period.toLowerCase().includes("present") && <Text style={styles.currentPill}>CURRENT</Text>}
+                  </View>
                   <Text style={styles.entrySub}>{e.company}</Text>
                   <Text style={styles.entryMeta}>{e.type}</Text>
                 </View>
                 <Text style={styles.entryPeriod}>{e.period}</Text>
               </View>
+              {e.description && <Text style={styles.entryDescription}>{clean(e.description)}</Text>}
               {e.highlights.map((h) => (
                 <View key={h} style={styles.bullet}>
                   <Text style={styles.bulletDot}>›</Text>
@@ -270,8 +284,8 @@ export function PortfolioDocument({
               ))}
               {e.techStack.length > 0 && (
                 <View style={styles.techRow}>
-                  {e.techStack.map((t) => (
-                    <Text key={t} style={styles.techTag}>{t}</Text>
+                  {e.techStack.map((t, i) => (
+                    <Text key={t} style={styles.techTag}>{t}{i < e.techStack.length - 1 ? " ·" : ""}</Text>
                   ))}
                 </View>
               )}
@@ -280,10 +294,10 @@ export function PortfolioDocument({
         </View>
 
         {education.length > 0 && (
-          <View style={{ marginTop: 8 }}>
+          <View style={{ marginTop: 18 }}>
             <SectionHeader title="Education" />
-            {education.map((e) => (
-              <View key={e.id} style={styles.eduEntry} wrap={false}>
+            {education.map((e, i) => (
+              <View key={e.id} style={[styles.entry, i === education.length - 1 ? styles.entryLast : undefined]} wrap={false}>
                 <View style={styles.entryHeaderRow}>
                   <View>
                     <Text style={styles.entryTitle}>{e.school}</Text>
@@ -303,8 +317,22 @@ export function PortfolioDocument({
           </View>
         )}
 
+        {certifications.length > 0 && (
+          <View style={{ marginTop: 18 }}>
+            <SectionHeader title="Certifications" sub={`${certifications.length} credentials`} />
+            <View style={styles.certGrid}>
+              {certifications.map((c) => (
+                <View key={c.id} style={styles.certItem} wrap={false}>
+                  <Text style={styles.certName}>{c.name}</Text>
+                  <Text style={styles.certMeta}>{c.issuer} · {c.issueDate}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+        )}
+
         <Text style={styles.footer} fixed>
-          {name} — {bareUrl(siteUrl)}
+          {name} · {bareUrl(siteUrl)}
         </Text>
         <Text style={styles.pageNum} render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} fixed />
       </Page>

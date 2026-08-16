@@ -39,6 +39,10 @@ export default async function EditExperiencePage({ params }: { params: Promise<{
           </div>
         </div>
         <div>
+          <label className="block text-sm font-medium mb-2">Description</label>
+          <textarea name="description" rows={3} defaultValue={e.description ?? ""} className="w-full rounded-xl border border-border bg-background/50 px-4 py-2.5 text-sm" />
+        </div>
+        <div>
           <label className="block text-sm font-medium mb-2">Highlights (one per line)</label>
           <textarea name="highlights" rows={4} defaultValue={e.highlights.join("\n")} className="w-full rounded-xl border border-border bg-background/50 px-4 py-2.5 text-sm" />
         </div>
