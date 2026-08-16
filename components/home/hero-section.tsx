@@ -1,7 +1,8 @@
 "use client"
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
-import { ArrowRight, Download, User } from "lucide-react"
+import { ArrowRight, Download } from "lucide-react"
 import { AvailabilityBadge } from "@/components/shared/availability-badge"
 import { ScrollStory } from "@/components/shared/motion-wrapper"
 import { Button } from "@/components/ui/button"
@@ -52,8 +53,14 @@ export function HeroSection({ availability, resumeUrl }: Props) {
           </motion.div>
         </div>
         <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
-          className="hidden aspect-[4/5] items-center justify-center rounded-3xl border border-border bg-muted lg:flex">
-          <User className="h-16 w-16 text-muted-foreground/30" strokeWidth={1} />
+          className="relative hidden aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-muted lg:block">
+          <Image
+            src="/images/rhazes-profile.jpg"
+            alt="Rhazes Devino"
+            fill
+            className="object-cover"
+            priority
+          />
         </motion.div>
       </div>
     </ScrollStory>
